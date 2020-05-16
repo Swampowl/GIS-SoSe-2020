@@ -1,3 +1,13 @@
+head {
+    background-color: black;
+    color: black;
+    width: 800px;
+    height: 300px;
+    margin: auto;
+    font-family: sans-serif;
+    text-align: center;
+}
+
 body {
     background-color: white;
     background-image: url("bg.png");
@@ -25,11 +35,13 @@ a {
 
 .headnav {
     margin-left: 625px;
-    width: 274px;
+    width: 267px;
     position: sticky;
     top: 0;
     background-color: black;
     overflow: hidden;
+    border: 4px solid darkorange;
+    border-radius: 4px;
 }
 
 
@@ -37,11 +49,12 @@ a {
 
 .headnav a {
     float: left;
-    color: #f2f2f2;
+    color: darkgrey;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 16px;
+    f
 }
 
 
@@ -118,4 +131,9 @@ a {
     -webkit-filter: contrast(2);
     /* Safari 6.0 - 9.0 */
     filter: contrast(2);
+}
+
+textarea {
+    border: 2px solid darkorange;
+    border-radius: 4px;
 }
