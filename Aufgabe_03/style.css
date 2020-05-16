@@ -30,7 +30,7 @@ a {
 }
 
 .headnav {
-    margin-left: 625px;
+    margin-left: auto;
     width: 267px;
     position: sticky;
     top: 0;
