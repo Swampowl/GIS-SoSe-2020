@@ -95,12 +95,12 @@ a {
     filter: contrast(2);
 }
 
-.mail {
+#mail {
     -webkit-filter: grayscale(50%);
     filter: grayscale(50%);
 }
 
-.mail a:hover {
+#mail a:hover {
     -webkit-filter: contrast(2);
     filter: contrast(2);
 }
