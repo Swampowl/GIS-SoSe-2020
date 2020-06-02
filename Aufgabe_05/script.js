@@ -40,7 +40,6 @@ var Warhammer;
         _preis: 9.90
     };
     let warhammerArray = [ultramarines, ultramarinesBemalen, deathGuard, deathguardBemalen, tyranidenGrundieren, tyranidenBemalen];
-    //Produkte einschleifen
     for (let _index = 0; _index < warhammerArray.length; _index++) {
         //Div erzeugen
         let _newDiv = document.createElement("div");
@@ -54,17 +53,18 @@ var Warhammer;
         let _newH3 = document.createElement("h3");
         _newH3.innerHTML = warhammerArray[_index]._name;
         _newDiv.appendChild(_newH3);
-        // document.getElementById("warhammer" + _index) ?.appendChild(_newH3);
         //Produkt_beschreibung hinzufügen
         let _newP = document.createElement("p");
         _newP.innerHTML = warhammerArray[_index]._beschreibung;
         _newDiv.appendChild(_newP);
-        //  document.getElementById("warhammer" + _index) ?.appendChild(_newP);
         // _preis hinzufügen
         let _newPreis = document.createElement("h4");
         _newPreis.innerHTML = warhammerArray[_index]._preis + "€";
         _newDiv.appendChild(_newPreis);
-        //    document.getElementById("warhammer" + _index) ?.appendChild(_newPreis);
+        // Button hinzufügen
+        let _newButton = document.createElement("button");
+        _newButton.innerHTML = "ins Cart...";
+        _newDiv.appendChild(_newButton);
     }
 })(Warhammer || (Warhammer = {}));
 //Warhammer
@@ -129,6 +129,10 @@ var Blender;
         let _newPreis = document.createElement("h4");
         _newPreis.innerHTML = blenderArray[_index]._preis + "€";
         _newDiv.appendChild(_newPreis);
+        // Button hinzufügen
+        let _newButton = document.createElement("button");
+        _newButton.innerHTML = "ins Cart...";
+        _newDiv.appendChild(_newButton);
     }
 })(Blender || (Blender = {}));
 //# sourceMappingURL=script.js.map

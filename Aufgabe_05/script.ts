@@ -51,7 +51,6 @@ namespace Warhammer {
 
     let warhammerArray: WarhammerInterface[] = [ultramarines, ultramarinesBemalen, deathGuard, deathguardBemalen, tyranidenGrundieren, tyranidenBemalen];
 
-    //Produkte einschleifen
     for (let _index: number = 0; _index < warhammerArray.length; _index++) {
         
        
@@ -67,18 +66,18 @@ namespace Warhammer {
         let _newH3: HTMLHeadingElement = document.createElement("h3");
         _newH3.innerHTML = warhammerArray[_index]._name;
         _newDiv.appendChild(_newH3);
-       // document.getElementById("warhammer" + _index) ?.appendChild(_newH3);
         //Produkt_beschreibung hinzufügen
         let _newP: HTMLParagraphElement = document.createElement("p");
         _newP.innerHTML = warhammerArray[_index]._beschreibung;
         _newDiv.appendChild(_newP);
-      //  document.getElementById("warhammer" + _index) ?.appendChild(_newP);
         // _preis hinzufügen
         let _newPreis: HTMLHeadingElement = document.createElement("h4");
         _newPreis.innerHTML = warhammerArray[_index]._preis + "€";
         _newDiv.appendChild(_newPreis);
-        
-    //    document.getElementById("warhammer" + _index) ?.appendChild(_newPreis);
+        // Button hinzufügen
+        let _newButton: HTMLElement = document.createElement("button");
+        _newButton.innerHTML = "ins Cart...";
+        _newDiv.appendChild(_newButton);
     }
 
 
@@ -154,11 +153,15 @@ namespace Blender {
         let _newP: HTMLParagraphElement = document.createElement("p");
         _newP.innerHTML = blenderArray[_index]._beschreibung;
         _newDiv.appendChild(_newP);
-     
         // _preis hinzufügen
         let _newPreis: HTMLHeadingElement = document.createElement("h4");
         _newPreis.innerHTML = blenderArray[_index]._preis + "€";
         _newDiv.appendChild(_newPreis);
+        // Button hinzufügen
+        let _newButton: HTMLElement = document.createElement("button");
+        _newButton.innerHTML = "ins Cart...";
+        _newDiv.appendChild(_newButton);
+        
         
     }
 }
