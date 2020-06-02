@@ -58,9 +58,10 @@ namespace Warhammer {
         let _newDiv: HTMLDivElement = document.createElement("div");
         _newDiv.setAttribute("id", "warhammer-produkt" + _index);
         document.getElementById("warhammer") ?.appendChild(_newDiv);
-         //Produktbezeichnung hinzufügen
-        let _newImage: HTMLElement = document.createElement("newImage");
+         //Produktbild hinzufügen
+        let _newImage: HTMLElement = document.createElement("img");
         _newImage.setAttribute ("src", warhammerArray[_index]._img);
+        _newImage.setAttribute ("class" , "pic");
         _newDiv.appendChild(_newImage);
         //Produktbezeichnung hinzufügen
         let _newH3: HTMLHeadingElement = document.createElement("h3");
@@ -141,9 +142,10 @@ namespace Blender {
         let _newDiv: HTMLDivElement = document.createElement("div");
         _newDiv.setAttribute("id", "blender-produkt" + _index);
         document.getElementById("blender") ?.appendChild(_newDiv);
-         //Produktbezeichnung hinzufügen
-        let _newImage: HTMLElement = document.createElement("newImage");
+        //Produktbezeichnung hinzufügen
+        let _newImage: HTMLElement = document.createElement("img");
         _newImage.setAttribute ("src", blenderArray[_index]._img);
+        _newImage.setAttribute ("class" , "pic");
         _newDiv.appendChild(_newImage);
         //Produktbezeichnung hinzufügen
         let _newH3: HTMLHeadingElement = document.createElement("h3");

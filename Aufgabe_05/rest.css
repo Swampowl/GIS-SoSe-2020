@@ -29,6 +29,11 @@ html {
     border-style: double;
 }
 
+.pic {
+    width: 50%;
+    height: 50%;
+}
+
 
 /* Style the header links */
 

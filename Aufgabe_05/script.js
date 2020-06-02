@@ -45,9 +45,10 @@ var Warhammer;
         let _newDiv = document.createElement("div");
         _newDiv.setAttribute("id", "warhammer-produkt" + _index);
         document.getElementById("warhammer")?.appendChild(_newDiv);
-        //Produktbezeichnung hinzufügen
-        let _newImage = document.createElement("newImage");
+        //Produktbild hinzufügen
+        let _newImage = document.createElement("img");
         _newImage.setAttribute("src", warhammerArray[_index]._img);
+        _newImage.setAttribute("class", "pic");
         _newDiv.appendChild(_newImage);
         //Produktbezeichnung hinzufügen
         let _newH3 = document.createElement("h3");
@@ -114,8 +115,9 @@ var Blender;
         _newDiv.setAttribute("id", "blender-produkt" + _index);
         document.getElementById("blender")?.appendChild(_newDiv);
         //Produktbezeichnung hinzufügen
-        let _newImage = document.createElement("newImage");
+        let _newImage = document.createElement("img");
         _newImage.setAttribute("src", blenderArray[_index]._img);
+        _newImage.setAttribute("class", "pic");
         _newDiv.appendChild(_newImage);
         //Produktbezeichnung hinzufügen
         let _newH3 = document.createElement("h3");

@@ -1,6 +1,7 @@
 body {
     background-image: url(Red4k.png);
     font-family: sans-serif;
+    text-align: center;
 }
 
 @media screen and (min-width: 720px) {
@@ -60,6 +61,11 @@ body {
         text-decoration: none;
         visibility: hidden;
     }
+}
+
+.pic {
+    width: 200px;
+    height: 200px;
 }
 
 
