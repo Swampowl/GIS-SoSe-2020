@@ -58,15 +58,15 @@ namespace Warhammer {
         let _newDiv: HTMLDivElement = document.createElement("div");
         _newDiv.setAttribute("id", "warhammer-produkt" + _index);
         document.getElementById("warhammer") ?.appendChild(_newDiv);
-         //Produktbild hinzufügen
-        let _newImage: HTMLElement = document.createElement("img");
-        _newImage.setAttribute ("src", warhammerArray[_index]._img);
-        _newImage.setAttribute ("class" , "pic");
-        _newDiv.appendChild(_newImage);
         //Produktbezeichnung hinzufügen
         let _newH3: HTMLHeadingElement = document.createElement("h3");
         _newH3.innerHTML = warhammerArray[_index]._name;
         _newDiv.appendChild(_newH3);
+        //Produktbild hinzufügen
+        let _newImage: HTMLElement = document.createElement("img");
+        _newImage.setAttribute ("src", warhammerArray[_index]._img);
+        _newImage.setAttribute ("class" , "pic");
+        _newDiv.appendChild(_newImage);
         //Produkt_beschreibung hinzufügen
         let _newP: HTMLParagraphElement = document.createElement("p");
         _newP.innerHTML = warhammerArray[_index]._beschreibung;
@@ -143,14 +143,14 @@ namespace Blender {
         _newDiv.setAttribute("id", "blender-produkt" + _index);
         document.getElementById("blender") ?.appendChild(_newDiv);
         //Produktbezeichnung hinzufügen
+        let _newH3: HTMLHeadingElement = document.createElement("h3");
+        _newH3.innerHTML = blenderArray[_index]._name;
+        _newDiv.appendChild(_newH3);
+        //Produktbezeichnung hinzufügen
         let _newImage: HTMLElement = document.createElement("img");
         _newImage.setAttribute ("src", blenderArray[_index]._img);
         _newImage.setAttribute ("class" , "pic");
         _newDiv.appendChild(_newImage);
-        //Produktbezeichnung hinzufügen
-        let _newH3: HTMLHeadingElement = document.createElement("h3");
-        _newH3.innerHTML = blenderArray[_index]._name;
-        _newDiv.appendChild(_newH3);
         //Produkt_beschreibung hinzufügen
         let _newP: HTMLParagraphElement = document.createElement("p");
         _newP.innerHTML = blenderArray[_index]._beschreibung;
