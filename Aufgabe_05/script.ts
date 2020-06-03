@@ -1,4 +1,3 @@
-console.log("Hallo");
 //Warhammer
 namespace Warhammer {
     interface WarhammerInterface {
