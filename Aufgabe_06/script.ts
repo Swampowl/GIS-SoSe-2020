@@ -202,7 +202,7 @@ namespace SwampowlShop {
         let nightLords: Article = {
             img: "Chaos/Nightlords.jpg",
             name: "Night Lords",
-            beschreibung: "Unaufspürbare Terror-Bringer. Man sieht sie nicht bevor es zu Spät ist.",
+            beschreibung: "Unaufspürbare Terror-Bringer. Man sieht sie nicht bevor es zu spät ist.",
             preis: 9.95
         };
 
