@@ -5,12 +5,12 @@ var SwampowlShop;
     let cartCounter = 0;
     let cartPrice = 0;
     let counterP;
-    let warhammerDiv;
-    let blenderDiv;
+    let chaosDiv;
+    let imperiumDiv;
     function init(_event) {
         console.log("Seite geladen");
-        generateArticleBlender();
-        generateArticleWarhammer();
+        generateArticleImperium();
+        generateArticleChaos();
         setCategoryClick();
         counterP = document.querySelector(".flexContainer p");
     }
@@ -30,93 +30,93 @@ var SwampowlShop;
             case "#home":
                 showHome();
                 break;
-            case "#warhammer":
-                showWarhammer();
+            case "#chaos":
+                showChaos();
                 break;
-            case "#blender":
-                showBlender();
+            case "#imperium":
+                showImperium();
                 break;
         }
     }
     function showHome() {
         console.log("h");
-        blenderDiv.style.display = "block";
-        warhammerDiv.style.display = "block";
+        imperiumDiv.style.display = "block";
+        chaosDiv.style.display = "block";
     }
-    function showWarhammer() {
+    function showChaos() {
         console.log("w");
-        warhammerDiv.style.display = "block";
-        blenderDiv.style.display = "none";
+        chaosDiv.style.display = "block";
+        imperiumDiv.style.display = "none";
     }
-    function showBlender() {
+    function showImperium() {
         console.log("b");
-        warhammerDiv.style.display = "none";
-        blenderDiv.style.display = "block";
+        chaosDiv.style.display = "none";
+        imperiumDiv.style.display = "block";
     }
-    function generateArticleBlender() {
-        blenderDiv = document.querySelector("#blender");
-        let smallPic = {
-            img: "BlackWhite.jpg",
-            name: "Kleines Bild",
-            beschreibung: "abstrakte Kunst ist crazy",
-            preis: 2.00
+    function generateArticleImperium() {
+        imperiumDiv = document.querySelector("#imperium");
+        let salamanders = {
+            img: "Imperium/Salamanders.webp",
+            name: "Salamanders",
+            beschreibung: "Loyalisten, die das Leben der einfachen Menschen über Ihr eigenes stellen.",
+            preis: 9.95
         };
-        let mediumPic = {
-            img: "Blue4k.jpg",
-            name: "4k Bild",
-            beschreibung: "is voll 4k",
-            preis: 4.50
+        let bloodAngels = {
+            img: "Imperium/BloodAngels.jfif",
+            name: "Blood Angels",
+            beschreibung: "Von Blutdurst getriebene Loyalisten.",
+            preis: 9.95
         };
-        let highPic = {
-            img: "Circle_rosegold.jpg",
-            name: "4K Abstrakte Kunst",
-            beschreibung: "Hobby der Jungfräulichkeit",
-            preis: 8.00
+        let imperialFists = {
+            img: "Imperium/ImperialFists.jfif",
+            name: "Imperial Fists",
+            beschreibung: "Die letzten Marines auf Terra.",
+            preis: 9.95
         };
-        let smallVid = {
-            img: "TestCircle.mp4",
-            name: "kleiner Loop",
-            beschreibung: "sieht nur halb fertig aus",
-            preis: 5
+        let spaceWolves = {
+            img: "Imperium/SpaceWolves.jpg",
+            name: "Space Wolves",
+            beschreibung: "Weltraum Wikinger die mit Äxten gegen Raumschiffe schlagen.",
+            preis: 9.95
         };
-        let midVid = {
-            img: "Hexagon_orange.mp4",
-            name: "Fancy Loop",
-            beschreibung: "da war jemandem langweilig",
-            preis: 2.00
+        let ultramarines = {
+            img: "Imperium/ultramarines.jfif",
+            name: "Ultramarines",
+            beschreibung: "Marines, die sich streng an jegliche Kriegsgesetze halten.",
+            preis: 9.95
         };
-        let highVid = {
-            img: "Circle_Animation.mp4",
-            name: "4k Animation",
-            beschreibung: "grenzt an waffenscheinpflichtigen Autismus",
-            preis: 9.90
+        let whiteScars = {
+            img: "Imperium/WhiteScars.jfif",
+            name: "White Scars",
+            beschreibung: "Wenn ein Planet mal schnell überrannt werden muss.",
+            preis: 9.95
         };
-        let blenderArray = [smallPic, mediumPic, highPic, smallVid, midVid, highVid];
+        let imperialArray = [salamanders, bloodAngels, imperialFists, spaceWolves, ultramarines, whiteScars];
         //Produkte einschleifen
-        for (let index = 0; index < blenderArray.length; index++) {
+        for (let index = 0; index < imperialArray.length; index++) {
             //Div erzeugen
             let newDiv = document.createElement("div");
-            newDiv.setAttribute("id", "blender-produkt" + index);
-            document.getElementById("blender")?.appendChild(newDiv);
+            newDiv.setAttribute("id", "imperium-produkt" + index);
+            document.getElementById("imperium")?.appendChild(newDiv);
             //Produktbezeichnung hinzufügen
             let newH = document.createElement("h3");
-            newH.innerHTML = blenderArray[index].name;
+            newH.innerHTML = imperialArray[index].name;
             newDiv.appendChild(newH);
             //Produktbild hinzufügen
-            let url = blenderArray[index].img;
+            let url = imperialArray[index].img;
             newDiv.appendChild((url.split(".")[1] == "mp4" ? createVideo(url) : createImage(url)));
             //Produktbeschreibung hinzufügen
             let newP = document.createElement("p");
-            newP.innerHTML = blenderArray[index].beschreibung;
+            newP.innerHTML = imperialArray[index].beschreibung;
             newDiv.appendChild(newP);
             // preis hinzufügen
             let newPreis = document.createElement("h4");
-            newPreis.innerHTML = blenderArray[index].preis.toFixed(2) + "€";
+            newPreis.innerHTML = imperialArray[index].preis.toFixed(2) + "€";
             newDiv.appendChild(newPreis);
             // Button hinzufügen
             let newButton = document.createElement("button");
             newButton.innerHTML = "ins Cart...";
-            newButton.addEventListener("click", handleToCartClick.bind(blenderArray[index]));
+            newButton.addEventListener("click", handleToCartClick.bind(imperialArray[index]));
             newDiv.appendChild(newButton);
         }
     }
@@ -144,71 +144,71 @@ var SwampowlShop;
         newImage.setAttribute("class", "pic");
         return newImage;
     }
-    function generateArticleWarhammer() {
-        warhammerDiv = document.querySelector("#warhammer");
-        let ultramarines = {
-            img: "Ultramarines.jpg",
-            name: "Ultramarines",
-            beschreibung: "Ultramarines grundieren",
-            preis: 2.00
+    function generateArticleChaos() {
+        chaosDiv = document.querySelector("#chaos");
+        let blackLegion = {
+            img: "Chaos/BlackLegion.jpg",
+            name: "Black Legion",
+            beschreibung: "Die erste abtrünnige Legion unter Horus.",
+            preis: 9.95
         };
-        let ultramarinesBemalen = {
-            img: "UltraSgt.jpeg",
-            name: "Ultramarines bemalen",
-            beschreibung: "sehen fresh aus",
-            preis: 9.90
+        let emperorsChildren = {
+            img: "Chaos/EmperorsChildren.jpeg",
+            name: "Emperor's Children",
+            beschreibung: "Sex-Addicts, die gerne töten während sie Spaß haben.",
+            preis: 9.95
         };
-        let deathGuard = {
-            img: "deathguard.jpg",
-            name: "Death Guard grundieren",
-            beschreibung: "sehen grün aus",
-            preis: 2.00
+        let ironWarriors = {
+            img: "Chaos/IronWarriors.jpg",
+            name: "Iron Warriors",
+            beschreibung: "Brutale, aber Ehrenhafte Duellanten, die den Zweikampf lieben.",
+            preis: 9.95
         };
-        let deathguardBemalen = {
-            img: "deathguard_painted.jpg",
-            name: "Death Guard bemalen",
-            beschreibung: "sehen eklig aus",
-            preis: 9.90
+        let nightLords = {
+            img: "Chaos/Nightlords.jpg",
+            name: "Night Lords",
+            beschreibung: "Unaufspürbare Terror-Bringer. Man sieht sie nicht bevor es zu Spät ist.",
+            preis: 9.95
         };
-        let tyranidenGrundieren = {
-            img: "tyranids.jpg",
-            name: "Tyraniden grundieren",
-            beschreibung: "sehen schwarz aus",
-            preis: 2.00
+        let thousandSons = {
+            img: "Chaos/ThousandSons.webp",
+            name: "Thousand Sons",
+            beschreibung: "In Ihrer Rüstung lebt kein Mensch mehr, nurnoch Boshaftigkeit.",
+            preis: 9.95
         };
-        let tyranidenBemalen = {
-            img: "deathguard_painted.jpg",
-            name: "Tyraniden bemalen",
-            beschreibung: "sehen creepy aus",
-            preis: 9.90
+        let worldEaters = {
+            img: "Chaos/WorldEaters.jpg",
+            name: "World Eaters",
+            beschreibung: "Ihr einziges Ziel ist, die Welten des Imperiums brennen zu sehen.",
+            preis: 9.95
         };
-        let warhammerArray = [ultramarines, ultramarinesBemalen, deathGuard, deathguardBemalen, tyranidenGrundieren, tyranidenBemalen];
-        for (let index = 0; index < warhammerArray.length; index++) {
+        let chaosArray = [blackLegion, emperorsChildren, ironWarriors, nightLords, thousandSons, worldEaters];
+        for (let index = 0; index < chaosArray.length; index++) {
             //Div erzeugen
             let newDiv = document.createElement("div");
-            newDiv.setAttribute("id", "warhammer-produkt" + index);
-            document.getElementById("warhammer")?.appendChild(newDiv);
+            newDiv.setAttribute("id", "chaos-produkt" + index);
+            document.getElementById("chaos")?.appendChild(newDiv);
             //Produktbezeichnung hinzufügen
             let newH = document.createElement("h3");
-            newH.innerHTML = warhammerArray[index].name;
+            newH.innerHTML = chaosArray[index].name;
             newDiv.appendChild(newH);
             //Produktbild hinzufügen
             let newImage = document.createElement("img");
-            newImage.setAttribute("src", warhammerArray[index].img);
+            newImage.setAttribute("src", chaosArray[index].img);
             newImage.setAttribute("class", "pic");
             newDiv.appendChild(newImage);
             //Produktbeschreibung hinzufügen
             let newP = document.createElement("p");
-            newP.innerHTML = warhammerArray[index].beschreibung;
+            newP.innerHTML = chaosArray[index].beschreibung;
             newDiv.appendChild(newP);
             // preis hinzufügen
             let newPreis = document.createElement("h4");
-            newPreis.innerHTML = warhammerArray[index].preis + "€";
+            newPreis.innerHTML = chaosArray[index].preis + "€";
             newDiv.appendChild(newPreis);
             // Button hinzufügen
             let newButton = document.createElement("button");
             newButton.innerHTML = "ins Cart...";
-            newButton.addEventListener("click", handleToCartClick.bind(warhammerArray[index]));
+            newButton.addEventListener("click", handleToCartClick.bind(chaosArray[index]));
             newDiv.appendChild(newButton);
         }
     }

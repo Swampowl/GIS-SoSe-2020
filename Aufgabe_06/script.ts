@@ -3,14 +3,14 @@ namespace SwampowlShop {
     let cartCounter: number = 0;
     let cartPrice: number = 0;
     let counterP: HTMLParagraphElement;
-    let warhammerDiv: HTMLDivElement;
-    let blenderDiv: HTMLDivElement;
+    let chaosDiv: HTMLDivElement;
+    let imperiumDiv: HTMLDivElement;
 
 
     function init(_event: Event): void {
         console.log("Seite geladen");
-        generateArticleBlender();
-        generateArticleWarhammer();
+        generateArticleImperium();
+        generateArticleChaos();
         setCategoryClick();
         counterP = <HTMLParagraphElement>document.querySelector(".flexContainer p");
     }
@@ -32,33 +32,33 @@ namespace SwampowlShop {
             case "#home":
                 showHome();
                 break;
-            case "#warhammer":
-                showWarhammer();
+            case "#chaos":
+                showChaos();
                 break;
-            case "#blender":
-                showBlender();
+            case "#imperium":
+                showImperium();
                 break;
         }
     }
 
     function showHome(): void {
         console.log("h");
-        blenderDiv.style.display = "block";
-        warhammerDiv.style.display = "block";
+        imperiumDiv.style.display = "block";
+        chaosDiv.style.display = "block";
     }
 
-    function showWarhammer(): void {
+    function showChaos(): void {
         console.log("w");
-        warhammerDiv.style.display = "block";
-        blenderDiv.style.display = "none";
+        chaosDiv.style.display = "block";
+        imperiumDiv.style.display = "none";
 
     }
 
-    function showBlender(): void {
+    function showImperium(): void {
         console.log("b");
 
-        warhammerDiv.style.display = "none";
-        blenderDiv.style.display = "block";
+        chaosDiv.style.display = "none";
+        imperiumDiv.style.display = "block";
     }
 
 
@@ -68,81 +68,81 @@ namespace SwampowlShop {
         beschreibung: string;
         preis: number;
     }
-    function generateArticleBlender(): void {
-        blenderDiv = <HTMLDivElement>document.querySelector("#blender");
+    function generateArticleImperium(): void {
+        imperiumDiv = <HTMLDivElement>document.querySelector("#imperium");
 
-        let smallPic: Article = {
-            img: "BlackWhite.jpg",
-            name: "Kleines Bild",
-            beschreibung: "abstrakte Kunst ist crazy",
-            preis: 2.00
+        let salamanders: Article = {
+            img: "Imperium/Salamanders.webp",
+            name: "Salamanders",
+            beschreibung: "Loyalisten, die das Leben der einfachen Menschen über Ihr eigenes stellen.",
+            preis: 9.95
         };
 
-        let mediumPic: Article = {
-            img: "Blue4k.jpg",
-            name: "4k Bild",
-            beschreibung: "is voll 4k",
-            preis: 4.50
+        let bloodAngels: Article = {
+            img: "Imperium/BloodAngels.jfif",
+            name: "Blood Angels",
+            beschreibung: "Von Blutdurst getriebene Loyalisten.",
+            preis: 9.95
         };
 
-        let highPic: Article = {
-            img: "Circle_rosegold.jpg",
-            name: "4K Abstrakte Kunst",
-            beschreibung: "Hobby der Jungfräulichkeit",
-            preis: 8.00
+        let imperialFists: Article = {
+            img: "Imperium/ImperialFists.jfif",
+            name: "Imperial Fists",
+            beschreibung: "Die letzten Marines auf Terra.",
+            preis: 9.95
         };
 
-        let smallVid: Article = {
-            img: "TestCircle.mp4",
-            name: "kleiner Loop",
-            beschreibung: "sieht nur halb fertig aus",
-            preis: 5
+        let spaceWolves: Article = {
+            img: "Imperium/SpaceWolves.jpg",
+            name: "Space Wolves",
+            beschreibung: "Weltraum Wikinger die mit Äxten gegen Raumschiffe schlagen.",
+            preis: 9.95
         };
 
-        let midVid: Article = {
-            img: "Hexagon_orange.mp4",
-            name: "Fancy Loop",
-            beschreibung: "da war jemandem langweilig",
-            preis: 2.00
+        let ultramarines: Article = {
+            img: "Imperium/ultramarines.jfif",
+            name: "Ultramarines",
+            beschreibung: "Marines, die sich streng an jegliche Kriegsgesetze halten.",
+            preis: 9.95
         };
 
-        let highVid: Article = {
-            img: "Circle_Animation.mp4",
-            name: "4k Animation",
-            beschreibung: "grenzt an waffenscheinpflichtigen Autismus",
-            preis: 9.90
+        let whiteScars: Article = {
+            img: "Imperium/WhiteScars.jfif",
+            name: "White Scars",
+            beschreibung: "Wenn ein Planet mal schnell überrannt werden muss.",
+            preis: 9.95
         };
 
 
-        let blenderArray: Article[] = [smallPic, mediumPic, highPic, smallVid, midVid, highVid];
+        let imperialArray: Article[] = [salamanders, bloodAngels, imperialFists, spaceWolves, ultramarines, whiteScars];
         //Produkte einschleifen
-        for (let index: number = 0; index < blenderArray.length; index++) {
+        for (let index: number = 0; index < imperialArray.length; index++) {
 
 
             //Div erzeugen
             let newDiv: HTMLDivElement = document.createElement("div");
-            newDiv.setAttribute("id", "blender-produkt" + index);
-            document.getElementById("blender")?.appendChild(newDiv);
+            newDiv.setAttribute("id", "imperium-produkt" + index);
+            document.getElementById("imperium")?.appendChild(newDiv);
             //Produktbezeichnung hinzufügen
             let newH: HTMLHeadingElement = document.createElement("h3");
-            newH.innerHTML = blenderArray[index].name;
+            newH.innerHTML = imperialArray[index].name;
             newDiv.appendChild(newH);
             //Produktbild hinzufügen
-            let url: string = blenderArray[index].img;
+            let url: string = imperialArray[index].img;
             newDiv.appendChild((url.split(".")[1] == "mp4" ? createVideo(url) : createImage(url)));
 
             //Produktbeschreibung hinzufügen
             let newP: HTMLParagraphElement = document.createElement("p");
-            newP.innerHTML = blenderArray[index].beschreibung;
+            newP.innerHTML = imperialArray[index].beschreibung;
             newDiv.appendChild(newP);
             // preis hinzufügen
             let newPreis: HTMLHeadingElement = document.createElement("h4");
-            newPreis.innerHTML = blenderArray[index].preis.toFixed(2) + "€";
+            newPreis.innerHTML = imperialArray[index].preis.toFixed(2) + "€";
             newDiv.appendChild(newPreis);
             // Button hinzufügen
             let newButton: HTMLButtonElement = document.createElement("button");
             newButton.innerHTML = "ins Cart...";
-            newButton.addEventListener("click", handleToCartClick.bind(blenderArray[index]));
+            newButton.addEventListener("click", handleToCartClick.bind(imperialArray[index]));
             newDiv.appendChild(newButton);
 
         }
@@ -175,80 +175,80 @@ namespace SwampowlShop {
     }
 
 
-    function generateArticleWarhammer(): void {
-        warhammerDiv = <HTMLDivElement>document.querySelector("#warhammer");
-        let ultramarines: Article = {
-            img: "Ultramarines.jpg",
-            name: "Ultramarines",
-            beschreibung: "Ultramarines grundieren",
-            preis: 2.00
+    function generateArticleChaos(): void {
+        chaosDiv = <HTMLDivElement>document.querySelector("#chaos");
+        let blackLegion: Article = {
+            img: "Chaos/BlackLegion.jpg",
+            name: "Black Legion",
+            beschreibung: "Die erste abtrünnige Legion unter Horus.",
+            preis: 9.95
         };
 
-        let ultramarinesBemalen: Article = {
-            img: "UltraSgt.jpeg",
-            name: "Ultramarines bemalen",
-            beschreibung: "sehen fresh aus",
-            preis: 9.90
+        let emperorsChildren: Article = {
+            img: "Chaos/EmperorsChildren.jpeg",
+            name: "Emperor's Children",
+            beschreibung: "Sex-Addicts, die gerne töten während sie Spaß haben.",
+            preis: 9.95
         };
 
-        let deathGuard: Article = {
-            img: "deathguard.jpg",
-            name: "Death Guard grundieren",
-            beschreibung: "sehen grün aus",
-            preis: 2.00
+        let ironWarriors: Article = {
+            img: "Chaos/IronWarriors.jpg",
+            name: "Iron Warriors",
+            beschreibung: "Brutale, aber Ehrenhafte Duellanten, die den Zweikampf lieben.",
+            preis: 9.95
         };
 
-        let deathguardBemalen: Article = {
-            img: "deathguard_painted.jpg",
-            name: "Death Guard bemalen",
-            beschreibung: "sehen eklig aus",
-            preis: 9.90
+        let nightLords: Article = {
+            img: "Chaos/Nightlords.jpg",
+            name: "Night Lords",
+            beschreibung: "Unaufspürbare Terror-Bringer. Man sieht sie nicht bevor es zu Spät ist.",
+            preis: 9.95
         };
 
-        let tyranidenGrundieren: Article = {
-            img: "tyranids.jpg",
-            name: "Tyraniden grundieren",
-            beschreibung: "sehen schwarz aus",
-            preis: 2.00
+        let thousandSons: Article = {
+            img: "Chaos/ThousandSons.webp",
+            name: "Thousand Sons",
+            beschreibung: "In Ihrer Rüstung lebt kein Mensch mehr, nurnoch Boshaftigkeit.",
+            preis: 9.95
         };
 
-        let tyranidenBemalen: Article = {
-            img: "deathguard_painted.jpg",
-            name: "Tyraniden bemalen",
-            beschreibung: "sehen creepy aus",
-            preis: 9.90
+        let worldEaters: Article = {
+            img: "Chaos/WorldEaters.jpg",
+            name: "World Eaters",
+            beschreibung: "Ihr einziges Ziel ist, die Welten des Imperiums brennen zu sehen.",
+            preis: 9.95
         };
 
-        let warhammerArray: Article[] = [ultramarines, ultramarinesBemalen, deathGuard, deathguardBemalen, tyranidenGrundieren, tyranidenBemalen];
+        let chaosArray: Article[] = [blackLegion, emperorsChildren, ironWarriors, nightLords, thousandSons, worldEaters];
 
-        for (let index: number = 0; index < warhammerArray.length; index++) {
+        for (let index: number = 0; index < chaosArray.length; index++) {
 
 
             //Div erzeugen
             let newDiv: HTMLDivElement = document.createElement("div");
-            newDiv.setAttribute("id", "warhammer-produkt" + index);
-            document.getElementById("warhammer")?.appendChild(newDiv);
+            newDiv.setAttribute("id", "chaos-produkt" + index);
+            document.getElementById("chaos")?.appendChild(newDiv);
             //Produktbezeichnung hinzufügen
             let newH: HTMLHeadingElement = document.createElement("h3");
-            newH.innerHTML = warhammerArray[index].name;
+            newH.innerHTML = chaosArray[index].name;
             newDiv.appendChild(newH);
             //Produktbild hinzufügen
             let newImage: HTMLElement = document.createElement("img");
-            newImage.setAttribute("src", warhammerArray[index].img);
+            newImage.setAttribute("src", chaosArray[index].img);
             newImage.setAttribute("class", "pic");
             newDiv.appendChild(newImage);
             //Produktbeschreibung hinzufügen
             let newP: HTMLParagraphElement = document.createElement("p");
-            newP.innerHTML = warhammerArray[index].beschreibung;
+            newP.innerHTML = chaosArray[index].beschreibung;
             newDiv.appendChild(newP);
             // preis hinzufügen
             let newPreis: HTMLHeadingElement = document.createElement("h4");
-            newPreis.innerHTML = warhammerArray[index].preis + "€";
+            newPreis.innerHTML = chaosArray[index].preis + "€";
             newDiv.appendChild(newPreis);
             // Button hinzufügen
             let newButton: HTMLElement = document.createElement("button");
             newButton.innerHTML = "ins Cart...";
-            newButton.addEventListener("click", handleToCartClick.bind(warhammerArray[index]));
+            newButton.addEventListener("click", handleToCartClick.bind(chaosArray[index]));
             newDiv.appendChild(newButton);
 
         }
