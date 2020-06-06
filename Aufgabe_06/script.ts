@@ -51,6 +51,7 @@ namespace SwampowlShop {
         console.log("w");
         chaosDiv.style.display = "block";
         imperiumDiv.style.display = "none";
+    
 
     }
 

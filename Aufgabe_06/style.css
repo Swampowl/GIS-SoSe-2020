@@ -1,7 +1,8 @@
 body {
-    background-image: url(darkblue4k_round.png);
+    background-image: url(background.jpg);
     font-family: sans-serif;
     text-align: center;
+    color: darkgrey;
 }
 
 @media screen and (min-width: 720px) {
@@ -13,18 +14,16 @@ body {
         box-shadow: 2px 2px 10px rgb(102, 102, 102);
     }
     .flexContainer {
+        border-radius:5px;
+        border-style: solid;
+        border-color: darkgrey;
         display: flex;
         flex-direction: row;
     }
-    img[alt=Shop_Logo] {
-        margin-top: 10px;
-        width: 70px;
-        height: 70px;
-    }
-    img[alt=Shop_Name] {
-        margin-top: 25px;
-        width: 100px;
-        height: 70px;
+    .flexContainer img {
+        display: block;
+        width: 25px;
+        height: 25px;
     }
     #suchen {
         margin-left: 20px;
@@ -47,7 +46,8 @@ body {
     }
     #Menü:hover li a {
         visibility: visible;
-        background-color: white;
+        background-color: darkred;
+        color: darkgrey;
     }
     ul {
         list-style-type: none;
@@ -85,6 +85,7 @@ video {
         box-shadow: 2px 2px 10px rgb(102, 102, 102);
     }
     .flexContainer {
+        
         display: flex;
         flex-direction: row;
     }
@@ -139,7 +140,10 @@ video {
 /*Produkte ab hier (Unverändert bei anderer Größe)*/
 
 main>h3 {
-    background-color: rgb(253, 253, 253);
+    background-color: darkred;
+    border-radius:5px;
+    border-style: solid;
+    border-color: darkgrey;
     margin: 10px;
     height: 30px;
     text-align: center;
