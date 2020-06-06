@@ -101,7 +101,7 @@ namespace SwampowlShop {
         };
 
         let ultramarines: Article = {
-            img: "Imperium/ultramarines.jfif",
+            img: "Imperium/Ultramarines.jfif",
             name: "Ultramarines",
             beschreibung: "Marines, die sich streng an jegliche Kriegsgesetze halten.",
             preis: 9.95
@@ -200,7 +200,7 @@ namespace SwampowlShop {
         };
 
         let nightLords: Article = {
-            img: "Chaos/Nightlords.jpg",
+            img: "Chaos/NightLords.jpg",
             name: "Night Lords",
             beschreibung: "Unaufspürbare Terror-Bringer. Man sieht sie nicht bevor es zu spät ist.",
             preis: 9.95

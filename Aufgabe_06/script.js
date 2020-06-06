@@ -80,7 +80,7 @@ var SwampowlShop;
             preis: 9.95
         };
         let ultramarines = {
-            img: "Imperium/ultramarines.jfif",
+            img: "Imperium/Ultramarines.jfif",
             name: "Ultramarines",
             beschreibung: "Marines, die sich streng an jegliche Kriegsgesetze halten.",
             preis: 9.95
@@ -165,7 +165,7 @@ var SwampowlShop;
             preis: 9.95
         };
         let nightLords = {
-            img: "Chaos/Nightlords.jpg",
+            img: "Chaos/NightLords.jpg",
             name: "Night Lords",
             beschreibung: "Unaufspürbare Terror-Bringer. Man sieht sie nicht bevor es zu spät ist.",
             preis: 9.95
