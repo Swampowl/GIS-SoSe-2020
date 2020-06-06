@@ -8,10 +8,9 @@ body {
 /* Chaos */
 
 #chaos {
-    background-color: darkred
-    ;
+    background-color: darkred;
     border: 30px solid;
-    border-image: url("Chaos_Background.png") 40 4000 repeat ;
+    border-image: url("Chaos_Background.png") 40 4000 repeat;
     border-radius: 30px;
     border-style: dotted;
     border-color: darkgrey;
@@ -21,8 +20,7 @@ body {
     background-color: #184C87;
     background-image: url("Frame_Imperium_Eagle.jpg");
     border: 5px solid;
-
-    border-image: url("back_Chaos_legions.jpg") 100 10 repeat;   
+    border-image: url("back_Chaos_legions.jpg") 100 10 repeat;
 }
 
 /* Imperium */
@@ -30,7 +28,7 @@ body {
 #imperium {
     background-color: #16617D;
     border: 30px solid;
-    border-image: url("4349.jpg") 400 400 repeat ;
+    border-image: url("4349.jpg") 400 400 repeat;
     border-radius: 30px;
     border-style: dotted;
     border-color: darkgrey;
@@ -40,7 +38,7 @@ body {
     background-color: #184C87;
     background-image: url("Frame_Imperium_Eagle.jpg");
     border: 5px solid;
-    border-image: url("Frame_Imperium_Eagle.jpg") 100 100 repeat;   
+    border-image: url("Frame_Imperium_Eagle.jpg") 100 100 repeat;
 }
 
 @media screen and (min-width: 720px) {
@@ -52,8 +50,14 @@ body {
         position: sticky;
     }
     #headerBox p {
-        margin-top: 50px;
+        position: absolute;
+        height: 15px;
+        border-radius: 30px;
+        width: 15px;
+        margin-top: 17px;
+        margin-right: 15px;
         position: sticky;
+        color: red;
     }
     .flexContainer {
         position: sticky;
