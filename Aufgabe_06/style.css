@@ -33,7 +33,7 @@ body {
     }
     .flexContainer p{
         position: relative;
-        margin-top: px;
+        margin-top: 30px;
         margin-left: 3px;
     }
     #suchen {
