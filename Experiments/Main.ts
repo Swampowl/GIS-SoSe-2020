@@ -4,7 +4,7 @@ namespace Experiments {
     let canvas: HTMLCanvasElement;
     let xBall: number = 0;
     let yBall: number = 0;
-    let xSpeed: number = 1
+    let xSpeed: number = 1;
     let ySpeed: number = 1;
     let radius: number = 40;
     let gravity: number = 0;
@@ -47,7 +47,7 @@ namespace Experiments {
         if (xBall <= -canvas.width / 2 + radius / 2 || xBall >= canvas.width / 2 - radius / 2) {
             xSpeed *= -1;
         }
-        if (yBall <= -canvas.height / 2 + radius / 2 || yBall >= canvas.height / 2 - radius / 2 {
+        if (yBall <= -canvas.height / 2 + radius / 2 || yBall >= canvas.height / 2 - radius / 2) {
             ySpeed *= -1;
         }
     }
