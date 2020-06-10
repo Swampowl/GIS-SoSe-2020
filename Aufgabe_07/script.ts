@@ -1,0 +1,152 @@
+namespace SwampowlShop {
+    window.addEventListener("load", init);
+    let cartCounter: number = 0;
+    let cartPrice: number = 0;
+    let counterP: HTMLParagraphElement;
+    let chaosDiv: HTMLDivElement;
+    let imperiumDiv: HTMLDivElement;
+
+
+    async function init(_event: Event): Promise<void> {
+        await communicate("articles.json");
+        console.log("Seite geladen");
+        generateArticles();
+        setCategoryClick();
+        counterP = <HTMLParagraphElement>document.querySelector(".flexContainer p");
+    }
+
+    function setCategoryClick(): void {
+        let menue: HTMLUListElement = <HTMLUListElement>document.querySelector("#Menü");
+        let max: number = menue.children.length;
+        let listA: HTMLAnchorElement;
+        for (let index: number = 2; index <= max; index++) {
+            listA = <HTMLAnchorElement>document.querySelector("li:nth-child(" + index + ") a");
+            console.log(listA);
+            listA.addEventListener("click", handleCategoryClick.bind(listA));
+        }
+    }
+
+    function handleCategoryClick(this: HTMLAnchorElement, _click: Event): void {
+        let categoryClick: string = <string>this.getAttribute("href");
+        switch (categoryClick) {
+            case "#home":
+                showHome();
+                break;
+            case "#chaos":
+                showChaos();
+                break;
+            case "#imperium":
+                showImperium();
+                break;
+        }
+    }
+
+    function showHome(): void {
+        console.log("h");
+        imperiumDiv.style.display = "block";
+        chaosDiv.style.display = "block";
+    }
+
+    function showChaos(): void {
+        console.log("w");
+        chaosDiv.style.display = "block";
+        imperiumDiv.style.display = "none";
+
+
+    }
+
+    function showImperium(): void {
+        console.log("b");
+
+        chaosDiv.style.display = "none";
+        imperiumDiv.style.display = "block";
+    }
+
+
+    interface Article {
+        img: string;
+        name: string;
+        beschreibung: string;
+        preis: number;
+    }
+
+    function handleToCartClick(this: Article, _click: MouseEvent): void {
+        cartCounter++;
+        cartPrice += this.preis;
+        console.log(counterP);
+        counterP.innerHTML = cartCounter <= 0 ? "" : cartCounter + "";
+        console.log(cartPrice);
+        console.log(cartCounter);
+
+    }
+    function generateArticles(): void {
+        chaosDiv = <HTMLDivElement>document.querySelector("#chaos");
+        imperiumDiv = <HTMLDivElement>document.querySelector("#imperium");
+        for (let index: number = 0; index < jsonArticles.length; index++) {
+            //Div erzeugen
+
+            switch (jsonArticles[index].category) {
+
+                case "Chaos":
+                    let newDiv: HTMLDivElement = document.createElement("div");
+                    newDiv.setAttribute("id", "chaos-produkt" + index);
+                    document.getElementById("chaos")?.appendChild(newDiv);
+                    //Produktbezeichnung hinzufügen
+                    let newH: HTMLHeadingElement = document.createElement("h3");
+                    newH.innerHTML = jsonArticles[index].name;
+                    newDiv.appendChild(newH);
+                    //Produktbild hinzufügen
+                    let newImage: HTMLElement = document.createElement("img");
+                    newImage.setAttribute("src", jsonArticles[index].img);
+                    newImage.setAttribute("class", "pic");
+                    newDiv.appendChild(newImage);
+                    //Produktbeschreibung hinzufügen
+                    let newP: HTMLParagraphElement = document.createElement("p");
+                    newP.innerHTML = jsonArticles[index].beschreibung;
+                    newDiv.appendChild(newP);
+                    // preis hinzufügen
+                    let newPreis: HTMLHeadingElement = document.createElement("h4");
+                    newPreis.innerHTML = jsonArticles[index].preis + "€";
+                    newDiv.appendChild(newPreis);
+                    // Button hinzufügen
+                    let newButton: HTMLElement = document.createElement("button");
+                    newButton.innerHTML = "ins Cart...";
+                    newButton.addEventListener("click", handleToCartClick.bind(jsonArticles[index]));
+                    newDiv.appendChild(newButton);
+
+                case "Imperium":
+                    let newDiv: HTMLDivElement = document.createElement("div");
+                    newDiv.setAttribute("id", "chaos-produkt" + index);
+                    document.getElementById("chaos")?.appendChild(newDiv);
+                    //Produktbezeichnung hinzufügen
+                    let newH: HTMLHeadingElement = document.createElement("h3");
+                    newH.innerHTML = jsonArticles[index].name;
+                    newDiv.appendChild(newH);
+                    //Produktbild hinzufügen
+                    let newImage: HTMLElement = document.createElement("img");
+                    newImage.setAttribute("src", jsonArticles[index].img);
+                    newImage.setAttribute("class", "pic");
+                    newDiv.appendChild(newImage);
+                    //Produktbeschreibung hinzufügen
+                    let newP: HTMLParagraphElement = document.createElement("p");
+                    newP.innerHTML = jsonArticles[index].beschreibung;
+                    newDiv.appendChild(newP);
+                    // preis hinzufügen
+                    let newPreis: HTMLHeadingElement = document.createElement("h4");
+                    newPreis.innerHTML = jsonArticles[index].preis + "€";
+                    newDiv.appendChild(newPreis);
+                    // Button hinzufügen
+                    let newButton: HTMLElement = document.createElement("button");
+                    newButton.innerHTML = "ins Cart...";
+                    newButton.addEventListener("click", handleToCartClick.bind(jsonArticles[index]));
+                    newDiv.appendChild(newButton);
+
+            }
+
+
+        }
+
+
+    }
+
+}

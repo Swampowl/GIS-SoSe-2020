@@ -1,0 +1,86 @@
+[
+    {
+        "category": "Chaos",
+        "img": "Chaos/BlackLegion.jpg",
+        "name": "Black Legion",
+        "beschreibung": "Die erste abtrünnige Legion unter Horus.",
+        "preis": 9.95
+    },
+    {
+        "category": "Chaos",
+        "img": "Chaos/EmperorsChildren.jpeg",
+        "name": "Emperor's Children",
+        "beschreibung": "Sex-Addicts, die gerne töten während sie Spaß haben.",
+        "preis": 9.95
+    },
+    {
+        "category": "Chaos",
+        "img": "Chaos/IronWarriors.jpg",
+        "name": "Iron Warriors",
+        "beschreibung": "Brutale, aber Ehrenhafte Duellanten, die den Zweikampf lieben.",
+        "preis": 9.95
+    },
+    {
+        "category": "Chaos",
+        "img": "Chaos/NightLords.jpg",
+        "name": "Night Lords",
+        "beschreibung": "Unaufspürbare Terror-Bringer. Man sieht sie nicht bevor es zu spät ist.",
+        "preis": 9.95
+    },
+    {
+        "category": "Chaos",
+        "img": "Chaos/ThousandSons.webp",
+        "name": "Thousand Sons",
+        "beschreibung": "In Ihrer Rüstung lebt kein Mensch mehr, nurnoch Boshaftigkeit.",
+        "preis": 9.95
+    },
+    {
+        "category": "Chaos",
+        "img": "Chaos/WorldEaters.jpg",
+        "name": "World Eaters",
+        "beschreibung": "Ihr einziges Ziel ist, die Welten des Imperiums brennen zu sehen.",
+        "preis": 9.95
+    },
+    {
+        "category": "Imperium",
+        "img": "Imperium/Salamanders.webp",
+        "name": "Salamanders",
+        "beschreibung": "Loyalisten, die das Leben der einfachen Menschen über Ihr eigenes stellen.",
+        "preis": 9.95
+    },
+    {
+        "category": "Imperium",
+        "img": "Imperium/BloodAngels.jfif",
+        "name": "Blood Angels",
+        "beschreibung": "Von Blutdurst getriebene Loyalisten.",
+        "preis": 9.95
+    },
+    {
+        "category": "Imperium",
+        "img": "Imperium/ImperialFists.jfif",
+        "name": "Imperial Fists",
+        "beschreibung": "Die letzten Marines auf Terra.",
+        "preis": 9.95
+    },
+    {
+        "category": "Imperium",
+        "img": "Imperium/SpaceWolves.jpg",
+        "name": "Space Wolves",
+        "beschreibung": "Weltraum Wikinger die mit Äxten gegen Raumschiffe schlagen.",
+        "preis": 9.95
+    },
+    {
+        "category": "Imperium",
+        "img": "Imperium/Ultramarines.jfif",
+        "name": "Ultramarines",
+        "beschreibung": "Marines, die sich streng an jegliche Kriegsgesetze halten.",
+        "preis": 9.95
+    },
+    {
+        "category": "Imperium",
+        "img": "Imperium/WhiteScars.jfif",
+        "name": "White Scars",
+        "beschreibung": "Wenn ein Planet mal schnell überrannt werden muss.",
+        "preis": 9.95
+    }
+]

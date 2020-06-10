@@ -9,6 +9,7 @@ namespace Experiments {
     let radius: number = 40;
     let gravity: number = 0;
     let color: string = "";
+    let ballColorAngle: number = 180 ;
     let colorAngle: number = 0;
 
 
@@ -27,8 +28,8 @@ namespace Experiments {
 
     function drawBall(_x: number, _y: number, _radius: number): void {
         crc2.beginPath();
-        crc2.strokeStyle = color;
-        crc2.fillStyle = color;
+        crc2.strokeStyle = "HSLA(" + ballColorAngle + ",100%,50%, 0.6)";
+        crc2.fillStyle = "HSLA(" + ballColorAngle + ",100%,50%, 0.6)";
         crc2.arc(_x, _y, _radius, 0 * Math.PI, 2 * Math.PI, false);
         crc2.stroke(); crc2.fill();
 
@@ -55,6 +56,7 @@ namespace Experiments {
         drawBackground(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         checkCollision();
         colorAngle++;
+        ballColorAngle++;
         color = "HSLA(" + colorAngle + ",100%,50%, 0.6)";
         ySpeed += gravity;
         xBall += xSpeed;

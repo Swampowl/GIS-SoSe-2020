@@ -11,6 +11,7 @@ var Experiments;
     let radius = 40;
     let gravity = 0;
     let color = "";
+    let ballColorAngle = 180;
     let colorAngle = 0;
     function init(_event) {
         canvas = document.querySelector("canvas");
@@ -25,8 +26,8 @@ var Experiments;
     }
     function drawBall(_x, _y, _radius) {
         crc2.beginPath();
-        crc2.strokeStyle = color;
-        crc2.fillStyle = color;
+        crc2.strokeStyle = "HSLA(" + ballColorAngle + ",100%,50%, 0.6)";
+        crc2.fillStyle = "HSLA(" + ballColorAngle + ",100%,50%, 0.6)";
         crc2.arc(_x, _y, _radius, 0 * Math.PI, 2 * Math.PI, false);
         crc2.stroke();
         crc2.fill();
@@ -51,6 +52,7 @@ var Experiments;
         drawBackground(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         checkCollision();
         colorAngle++;
+        ballColorAngle++;
         color = "HSLA(" + colorAngle + ",100%,50%, 0.6)";
         ySpeed += gravity;
         xBall += xSpeed;
