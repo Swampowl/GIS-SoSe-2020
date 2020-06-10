@@ -9,7 +9,7 @@ namespace SwampowlShop {
     export let categories: Article[][] = [];
     export let category: Article[] = [];
 
-    interface Article {
+    export interface Article {
         category: string;
         img: string;
         name: string;
@@ -85,6 +85,14 @@ namespace SwampowlShop {
         counterP.innerHTML = cartCounter <= 0 ? "" : cartCounter + "";
         console.log(cartPrice);
         console.log(cartCounter);
+        toStorage(this);
+
+    }
+
+    function toStorage(_article: Article): void {
+        let inhalt: string = JSON.stringify(_article);
+        localStorage.setItem(_article.name, inhalt);
+        console.log(localStorage)
 
     }
     function generateArticles(_categories: Article[][]): void {
@@ -96,34 +104,37 @@ namespace SwampowlShop {
             let div: HTMLDivElement = <HTMLDivElement>document.querySelector(categories.indexOf(categoryTemp) == 0 ? "#chaos" : "#imperium");
             for (let article of categoryTemp) {
                 //Div erzeugen
-
-                let newDiv: HTMLDivElement = document.createElement("div");
-                //Produktbezeichnung hinzufügen
-                let newH: HTMLHeadingElement = document.createElement("h3");
-                newH.innerHTML = article.name;
-                newDiv.appendChild(newH);
-                //Produktbild hinzufügen
-                let newImage: HTMLElement = document.createElement("img");
-                newImage.setAttribute("src", article.img);
-                newImage.setAttribute("class", "pic");
-                newDiv.appendChild(newImage);
-                //Produktbeschreibung hinzufügen
-                let newP: HTMLParagraphElement = document.createElement("p");
-                newP.innerHTML = article.beschreibung;
-                newDiv.appendChild(newP);
-                // preis hinzufügen
-                let newPreis: HTMLHeadingElement = document.createElement("h4");
-                newPreis.innerHTML = article.preis + "€";
-                newDiv.appendChild(newPreis);
-                // Button hinzufügen
-                let newButton: HTMLElement = document.createElement("button");
-                newButton.innerHTML = "ins Cart...";
-                newButton.addEventListener("click", handleToCartClick.bind(article));
-                newDiv.appendChild(newButton);
-                console.log(newDiv);
-                div.appendChild(newDiv);
+                div.appendChild(generateDiv(article));
             }
-
         }
     }
+    export function generateDiv(_article: Article): HTMLDivElement {
+        let newDiv: HTMLDivElement = document.createElement("div");
+        //Produktbezeichnung hinzufügen
+        let newH: HTMLHeadingElement = document.createElement("h3");
+        newH.innerHTML = _article.name;
+        newDiv.appendChild(newH);
+        //Produktbild hinzufügen
+        let newImage: HTMLElement = document.createElement("img");
+        newImage.setAttribute("src", _article.img);
+        newImage.setAttribute("class", "pic");
+        newDiv.appendChild(newImage);
+        //Produktbeschreibung hinzufügen
+        let newP: HTMLParagraphElement = document.createElement("p");
+        newP.innerHTML = _article.beschreibung;
+        newDiv.appendChild(newP);
+        // preis hinzufügen
+        let newPreis: HTMLHeadingElement = document.createElement("h4");
+        newPreis.innerHTML = _article.preis + "€";
+        newDiv.appendChild(newPreis);
+        // Button hinzufügen
+        let newButton: HTMLElement = document.createElement("button");
+        newButton.innerHTML = "ins Cart...";
+        newButton.addEventListener("click", handleToCartClick.bind(_article));
+        newDiv.appendChild(newButton);
+        return newDiv;
+    }
+
 }
+
+

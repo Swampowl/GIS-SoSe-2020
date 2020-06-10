@@ -67,6 +67,12 @@ var SwampowlShop;
         counterP.innerHTML = cartCounter <= 0 ? "" : cartCounter + "";
         console.log(cartPrice);
         console.log(cartCounter);
+        toStorage(this);
+    }
+    function toStorage(_article) {
+        let inhalt = JSON.stringify(_article);
+        localStorage.setItem(_article.name, inhalt);
+        console.log(localStorage);
     }
     function generateArticles(_categories) {
         chaosDiv = document.querySelector("#chaos");
@@ -75,33 +81,36 @@ var SwampowlShop;
             let div = document.querySelector(SwampowlShop.categories.indexOf(categoryTemp) == 0 ? "#chaos" : "#imperium");
             for (let article of categoryTemp) {
                 //Div erzeugen
-                let newDiv = document.createElement("div");
-                //Produktbezeichnung hinzufügen
-                let newH = document.createElement("h3");
-                newH.innerHTML = article.name;
-                newDiv.appendChild(newH);
-                //Produktbild hinzufügen
-                let newImage = document.createElement("img");
-                newImage.setAttribute("src", article.img);
-                newImage.setAttribute("class", "pic");
-                newDiv.appendChild(newImage);
-                //Produktbeschreibung hinzufügen
-                let newP = document.createElement("p");
-                newP.innerHTML = article.beschreibung;
-                newDiv.appendChild(newP);
-                // preis hinzufügen
-                let newPreis = document.createElement("h4");
-                newPreis.innerHTML = article.preis + "€";
-                newDiv.appendChild(newPreis);
-                // Button hinzufügen
-                let newButton = document.createElement("button");
-                newButton.innerHTML = "ins Cart...";
-                newButton.addEventListener("click", handleToCartClick.bind(article));
-                newDiv.appendChild(newButton);
-                console.log(newDiv);
-                div.appendChild(newDiv);
+                div.appendChild(generateDiv(article));
             }
         }
     }
+    function generateDiv(_article) {
+        let newDiv = document.createElement("div");
+        //Produktbezeichnung hinzufügen
+        let newH = document.createElement("h3");
+        newH.innerHTML = _article.name;
+        newDiv.appendChild(newH);
+        //Produktbild hinzufügen
+        let newImage = document.createElement("img");
+        newImage.setAttribute("src", _article.img);
+        newImage.setAttribute("class", "pic");
+        newDiv.appendChild(newImage);
+        //Produktbeschreibung hinzufügen
+        let newP = document.createElement("p");
+        newP.innerHTML = _article.beschreibung;
+        newDiv.appendChild(newP);
+        // preis hinzufügen
+        let newPreis = document.createElement("h4");
+        newPreis.innerHTML = _article.preis + "€";
+        newDiv.appendChild(newPreis);
+        // Button hinzufügen
+        let newButton = document.createElement("button");
+        newButton.innerHTML = "ins Cart...";
+        newButton.addEventListener("click", handleToCartClick.bind(_article));
+        newDiv.appendChild(newButton);
+        return newDiv;
+    }
+    SwampowlShop.generateDiv = generateDiv;
 })(SwampowlShop || (SwampowlShop = {}));
-//# sourceMappingURL=script.js.map
+//# sourceMappingURL=Script.js.map

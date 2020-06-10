@@ -1,11 +1,21 @@
 "use strict";
 var SwampowlShop;
 (function (SwampowlShop) {
-    class Cart {
-        constructor() {
-            this.cartArticles = [];
+    let container;
+    let article;
+    window.addEventListener("load", init);
+    function init(_event) {
+        container = document.querySelector("#Warenkorb");
+        buildArticles();
+    }
+    function buildArticles() {
+        console.log(localStorage);
+        for (let index = 0; index <= localStorage.length; index++) {
+            let articleKey = localStorage.key(index);
+            let jsonString = localStorage.getItem(articleKey);
+            article = JSON.parse(jsonString);
+            container.appendChild(SwampowlShop.generateDiv(article));
         }
     }
-    SwampowlShop.Cart = Cart;
 })(SwampowlShop || (SwampowlShop = {}));
-//# sourceMappingURL=cart.js.map
+//# sourceMappingURL=Cart.js.map
