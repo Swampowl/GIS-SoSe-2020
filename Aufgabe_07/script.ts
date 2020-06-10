@@ -6,11 +6,27 @@ namespace SwampowlShop {
     let chaosDiv: HTMLDivElement;
     let imperiumDiv: HTMLDivElement;
 
+    export let categories: Article[][] = [];
+    export let category: Article[] = [];
+
+    interface Article {
+        category: string;
+        img: string;
+        name: string;
+        beschreibung: string;
+        preis: number;
+    }
+
+    async function communicate(_url: RequestInfo): Promise<void> {
+        let response: Response = await fetch("articles.json");
+        categories = <Article[][]>await response.json();
+        generateArticles(categories);
+        console.log("Response", categories);
+    }
 
     async function init(_event: Event): Promise<void> {
         await communicate("articles.json");
         console.log("Seite geladen");
-        generateArticles();
         setCategoryClick();
         counterP = <HTMLParagraphElement>document.querySelector(".flexContainer p");
     }
@@ -62,14 +78,6 @@ namespace SwampowlShop {
         imperiumDiv.style.display = "block";
     }
 
-
-    interface Article {
-        img: string;
-        name: string;
-        beschreibung: string;
-        preis: number;
-    }
-
     function handleToCartClick(this: Article, _click: MouseEvent): void {
         cartCounter++;
         cartPrice += this.preis;
@@ -79,74 +87,43 @@ namespace SwampowlShop {
         console.log(cartCounter);
 
     }
-    function generateArticles(): void {
+    function generateArticles(_categories: Article[][]): void {
         chaosDiv = <HTMLDivElement>document.querySelector("#chaos");
         imperiumDiv = <HTMLDivElement>document.querySelector("#imperium");
-        for (let index: number = 0; index < jsonArticles.length; index++) {
-            //Div erzeugen
 
-            switch (jsonArticles[index].category) {
+        for (let categoryTemp of categories) {
 
-                case "Chaos":
-                    let newDiv: HTMLDivElement = document.createElement("div");
-                    newDiv.setAttribute("id", "chaos-produkt" + index);
-                    document.getElementById("chaos")?.appendChild(newDiv);
-                    //Produktbezeichnung hinzufügen
-                    let newH: HTMLHeadingElement = document.createElement("h3");
-                    newH.innerHTML = jsonArticles[index].name;
-                    newDiv.appendChild(newH);
-                    //Produktbild hinzufügen
-                    let newImage: HTMLElement = document.createElement("img");
-                    newImage.setAttribute("src", jsonArticles[index].img);
-                    newImage.setAttribute("class", "pic");
-                    newDiv.appendChild(newImage);
-                    //Produktbeschreibung hinzufügen
-                    let newP: HTMLParagraphElement = document.createElement("p");
-                    newP.innerHTML = jsonArticles[index].beschreibung;
-                    newDiv.appendChild(newP);
-                    // preis hinzufügen
-                    let newPreis: HTMLHeadingElement = document.createElement("h4");
-                    newPreis.innerHTML = jsonArticles[index].preis + "€";
-                    newDiv.appendChild(newPreis);
-                    // Button hinzufügen
-                    let newButton: HTMLElement = document.createElement("button");
-                    newButton.innerHTML = "ins Cart...";
-                    newButton.addEventListener("click", handleToCartClick.bind(jsonArticles[index]));
-                    newDiv.appendChild(newButton);
+            let div: HTMLDivElement = <HTMLDivElement>document.querySelector(categories.indexOf(categoryTemp) == 0 ? "#chaos" : "#imperium");
+            for (let article of categoryTemp) {
+                //Div erzeugen
 
-                case "Imperium":
-                    let newDiv: HTMLDivElement = document.createElement("div");
-                    newDiv.setAttribute("id", "chaos-produkt" + index);
-                    document.getElementById("chaos")?.appendChild(newDiv);
-                    //Produktbezeichnung hinzufügen
-                    let newH: HTMLHeadingElement = document.createElement("h3");
-                    newH.innerHTML = jsonArticles[index].name;
-                    newDiv.appendChild(newH);
-                    //Produktbild hinzufügen
-                    let newImage: HTMLElement = document.createElement("img");
-                    newImage.setAttribute("src", jsonArticles[index].img);
-                    newImage.setAttribute("class", "pic");
-                    newDiv.appendChild(newImage);
-                    //Produktbeschreibung hinzufügen
-                    let newP: HTMLParagraphElement = document.createElement("p");
-                    newP.innerHTML = jsonArticles[index].beschreibung;
-                    newDiv.appendChild(newP);
-                    // preis hinzufügen
-                    let newPreis: HTMLHeadingElement = document.createElement("h4");
-                    newPreis.innerHTML = jsonArticles[index].preis + "€";
-                    newDiv.appendChild(newPreis);
-                    // Button hinzufügen
-                    let newButton: HTMLElement = document.createElement("button");
-                    newButton.innerHTML = "ins Cart...";
-                    newButton.addEventListener("click", handleToCartClick.bind(jsonArticles[index]));
-                    newDiv.appendChild(newButton);
-
+                let newDiv: HTMLDivElement = document.createElement("div");
+                //Produktbezeichnung hinzufügen
+                let newH: HTMLHeadingElement = document.createElement("h3");
+                newH.innerHTML = article.name;
+                newDiv.appendChild(newH);
+                //Produktbild hinzufügen
+                let newImage: HTMLElement = document.createElement("img");
+                newImage.setAttribute("src", article.img);
+                newImage.setAttribute("class", "pic");
+                newDiv.appendChild(newImage);
+                //Produktbeschreibung hinzufügen
+                let newP: HTMLParagraphElement = document.createElement("p");
+                newP.innerHTML = article.beschreibung;
+                newDiv.appendChild(newP);
+                // preis hinzufügen
+                let newPreis: HTMLHeadingElement = document.createElement("h4");
+                newPreis.innerHTML = article.preis + "€";
+                newDiv.appendChild(newPreis);
+                // Button hinzufügen
+                let newButton: HTMLElement = document.createElement("button");
+                newButton.innerHTML = "ins Cart...";
+                newButton.addEventListener("click", handleToCartClick.bind(article));
+                newDiv.appendChild(newButton);
+                console.log(newDiv);
+                div.appendChild(newDiv);
             }
 
-
         }
-
-
     }
-
 }

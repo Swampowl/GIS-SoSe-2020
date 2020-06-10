@@ -1,12 +1,11 @@
 "use strict";
 var SwampowlShop;
 (function (SwampowlShop) {
-    SwampowlShop.jsonArticles = [];
-    async function communicate(_url) {
-        let response = await fetch("articles.json");
-        SwampowlShop.jsonArticles = await response.json();
-        console.log("Response", SwampowlShop.jsonArticles);
+    class Cart {
+        constructor() {
+            this.cartArticles = [];
+        }
     }
-    SwampowlShop.communicate = communicate;
+    SwampowlShop.Cart = Cart;
 })(SwampowlShop || (SwampowlShop = {}));
 //# sourceMappingURL=cart.js.map

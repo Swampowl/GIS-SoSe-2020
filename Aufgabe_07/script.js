@@ -7,10 +7,17 @@ var SwampowlShop;
     let counterP;
     let chaosDiv;
     let imperiumDiv;
+    SwampowlShop.categories = [];
+    SwampowlShop.category = [];
+    async function communicate(_url) {
+        let response = await fetch("articles.json");
+        SwampowlShop.categories = await response.json();
+        generateArticles(SwampowlShop.categories);
+        console.log("Response", SwampowlShop.categories);
+    }
     async function init(_event) {
-        await SwampowlShop.communicate("articles.json");
+        await communicate("articles.json");
         console.log("Seite geladen");
-        generateArticles();
         setCategoryClick();
         counterP = document.querySelector(".flexContainer p");
     }
@@ -61,64 +68,38 @@ var SwampowlShop;
         console.log(cartPrice);
         console.log(cartCounter);
     }
-    function generateArticles() {
+    function generateArticles(_categories) {
         chaosDiv = document.querySelector("#chaos");
         imperiumDiv = document.querySelector("#imperium");
-        for (let index = 0; index < SwampowlShop.jsonArticles.length; index++) {
-            //Div erzeugen
-            switch (SwampowlShop.jsonArticles[index].category) {
-                case "chaos":
-                    let newDiv = document.createElement("div");
-                    newDiv.setAttribute("id", "chaos-produkt" + index);
-                    document.getElementById("chaos")?.appendChild(newDiv);
-                    //Produktbezeichnung hinzufügen
-                    let newH = document.createElement("h3");
-                    newH.innerHTML = SwampowlShop.jsonArticles[index].name;
-                    newDiv.appendChild(newH);
-                    //Produktbild hinzufügen
-                    let newImage = document.createElement("img");
-                    newImage.setAttribute("src", SwampowlShop.jsonArticles[index].img);
-                    newImage.setAttribute("class", "pic");
-                    newDiv.appendChild(newImage);
-                    //Produktbeschreibung hinzufügen
-                    let newP = document.createElement("p");
-                    newP.innerHTML = SwampowlShop.jsonArticles[index].beschreibung;
-                    newDiv.appendChild(newP);
-                    // preis hinzufügen
-                    let newPreis = document.createElement("h4");
-                    newPreis.innerHTML = SwampowlShop.jsonArticles[index].preis + "€";
-                    newDiv.appendChild(newPreis);
-                    // Button hinzufügen
-                    let newButton = document.createElement("button");
-                    newButton.innerHTML = "ins Cart...";
-                    newButton.addEventListener("click", handleToCartClick.bind(SwampowlShop.jsonArticles[index]));
-                    newDiv.appendChild(newButton);
-                case "imperium":
-                    let newDiv = document.createElement("div");
-                    newDiv.setAttribute("id", "chaos-produkt" + index);
-                    document.getElementById("chaos")?.appendChild(newDiv);
-                    //Produktbezeichnung hinzufügen
-                    let newH = document.createElement("h3");
-                    newH.innerHTML = SwampowlShop.jsonArticles[index].name;
-                    newDiv.appendChild(newH);
-                    //Produktbild hinzufügen
-                    let newImage = document.createElement("img");
-                    newImage.setAttribute("src", SwampowlShop.jsonArticles[index].img);
-                    newImage.setAttribute("class", "pic");
-                    newDiv.appendChild(newImage);
-                    //Produktbeschreibung hinzufügen
-                    let newP = document.createElement("p");
-                    newP.innerHTML = SwampowlShop.jsonArticles[index].beschreibung;
-                    newDiv.appendChild(newP);
-                    // preis hinzufügen
-                    let newPreis = document.createElement("h4");
-                    newPreis.innerHTML = SwampowlShop.jsonArticles[index].preis + "€";
-                    newDiv.appendChild(newPreis);
-                    // Button hinzufügen
-                    let newButton = document.createElement("button");
-                    newButton.innerHTML = "ins Cart...";
-                    newButton.addEventListener("click", handleToCartClick.bind(SwampowlShop.jsonArticles[index]));
-                    newDiv.appendChild(newButton);
+        for (let categoryTemp of SwampowlShop.categories) {
+            let div = document.querySelector(SwampowlShop.categories.indexOf(categoryTemp) == 0 ? "#chaos" : "#imperium");
+            for (let article of categoryTemp) {
+                //Div erzeugen
+                let newDiv = document.createElement("div");
+                //Produktbezeichnung hinzufügen
+                let newH = document.createElement("h3");
+                newH.innerHTML = article.name;
+                newDiv.appendChild(newH);
+                //Produktbild hinzufügen
+                let newImage = document.createElement("img");
+                newImage.setAttribute("src", article.img);
+                newImage.setAttribute("class", "pic");
+                newDiv.appendChild(newImage);
+                //Produktbeschreibung hinzufügen
+                let newP = document.createElement("p");
+                newP.innerHTML = article.beschreibung;
+                newDiv.appendChild(newP);
+                // preis hinzufügen
+                let newPreis = document.createElement("h4");
+                newPreis.innerHTML = article.preis + "€";
+                newDiv.appendChild(newPreis);
+                // Button hinzufügen
+                let newButton = document.createElement("button");
+                newButton.innerHTML = "ins Cart...";
+                newButton.addEventListener("click", handleToCartClick.bind(article));
+                newDiv.appendChild(newButton);
+                console.log(newDiv);
+                div.appendChild(newDiv);
             }
         }
     }
