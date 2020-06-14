@@ -69,6 +69,19 @@ var SwampowlShop;
         console.log(cartCounter);
         toStorage(this);
     }
+    function deleteItem(_click) {
+        Object.keys(localStorage).forEach(key => {
+            let str = localStorage.getItem(key);
+            if (str != null) {
+                let item = JSON.parse(str);
+                if (item.name == this.name) {
+                    localStorage.removeItem(key);
+                }
+            }
+        });
+        let element = document.getElementById(this.name);
+        element?.parentElement?.removeChild(element);
+    }
     function toStorage(_article) {
         let inhalt = JSON.stringify(_article);
         localStorage.setItem(_article.name, inhalt);
@@ -81,13 +94,14 @@ var SwampowlShop;
             let div = document.querySelector(SwampowlShop.categories.indexOf(categoryTemp) == 0 ? "#chaos" : "#imperium");
             for (let article of categoryTemp) {
                 //Div erzeugen
-                div.appendChild(generateDiv(article));
+                div.appendChild(generateDiv(article, false));
             }
         }
     }
-    function generateDiv(_article) {
+    function generateDiv(_article, inCart) {
         let newDiv = document.createElement("div");
         //Produktbezeichnung hinzufügen
+        newDiv.id = _article.name;
         let newH = document.createElement("h3");
         newH.innerHTML = _article.name;
         newDiv.appendChild(newH);
@@ -106,11 +120,17 @@ var SwampowlShop;
         newDiv.appendChild(newPreis);
         // Button hinzufügen
         let newButton = document.createElement("button");
-        newButton.innerHTML = "ins Cart...";
-        newButton.addEventListener("click", handleToCartClick.bind(_article));
+        if (!inCart) {
+            newButton.innerHTML = "ins Cart...";
+            newButton.addEventListener("click", handleToCartClick.bind(_article));
+        }
+        else {
+            newButton.innerHTML = "Löschen";
+            newButton.addEventListener("click", deleteItem.bind(_article));
+        }
         newDiv.appendChild(newButton);
         return newDiv;
     }
     SwampowlShop.generateDiv = generateDiv;
 })(SwampowlShop || (SwampowlShop = {}));
-//# sourceMappingURL=Script.js.map
+//# sourceMappingURL=script.js.map

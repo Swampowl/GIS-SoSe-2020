@@ -6,6 +6,7 @@ var SwampowlShop;
     window.addEventListener("load", init);
     function init(_event) {
         container = document.querySelector("#Warenkorb");
+        document.querySelector("#deleteAll")?.addEventListener("click", deleteAll);
         buildArticles();
     }
     function buildArticles() {
@@ -14,8 +15,12 @@ var SwampowlShop;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             article = JSON.parse(jsonString);
-            container.appendChild(SwampowlShop.generateDiv(article));
+            container.appendChild(SwampowlShop.generateDiv(article, true));
         }
     }
+    function deleteAll() {
+        localStorage.clear();
+        container.innerHTML = "";
+    }
 })(SwampowlShop || (SwampowlShop = {}));
-//# sourceMappingURL=Cart.js.map
+//# sourceMappingURL=cart.js.map
