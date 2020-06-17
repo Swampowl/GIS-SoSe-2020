@@ -45,6 +45,7 @@ export namespace A08Server {
         _response.write(_request.url);
         console.log(_request);
         //beendet die Antwort
+        console.log(_request.url);
         _response.end();
     }
 }

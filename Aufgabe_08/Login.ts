@@ -14,6 +14,7 @@ namespace Server {
         let response: Response = await fetch(_url);
         
         console.log(await response.text());
+
     }
 
     function handleSubmit() {
