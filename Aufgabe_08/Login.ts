@@ -1,6 +1,5 @@
 namespace Server {
     window.addEventListener("load", init);
-    let formData: FormData;
     let button: HTMLButtonElement;
 
     function init(_event: Event): void {
@@ -28,6 +27,6 @@ namespace Server {
     }
 
     function handleSubmit(){
-        
+
     }
 }

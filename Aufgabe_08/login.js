@@ -2,7 +2,6 @@
 var Server;
 (function (Server) {
     window.addEventListener("load", init);
-    let formData;
     let button;
     function init(_event) {
         button = document.querySelector("button");

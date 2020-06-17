@@ -34,7 +34,7 @@ export namespace A08Server {
     // wird ausgeführt wenn eine Anfrage auf dem Localhost ankommt
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
         //gibt "Irgendwas wurde geklickt" aus, sobald handleRequest ausgeführt wird
-        console.log("Irgendwas wurde geklickt");
+        // console.log("Irgendwas wurde geklickt");
 
         //Setzt den Wert des des content-types im Protokollheader auf html  mit dem charset utf8
         _response.setHeader("content-type", "text/html; charset=utf-8");
@@ -43,6 +43,8 @@ export namespace A08Server {
 
         //gibt die Angefragte URL zurück
         _response.write(_request.url);
+
+       // console.log(_request);
 
         //beendet die Antwort
         _response.end();
