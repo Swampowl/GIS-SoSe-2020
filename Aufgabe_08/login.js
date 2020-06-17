@@ -8,18 +8,16 @@ var Server;
         button.addEventListener("click", handleSubmit);
     }
     let submitButton = document.getElementById("submitButton");
-    submitButton.addEventListener("click", communicate);
-    async function communicate() {
+    submitButton.addEventListener("click", handleSubmit);
+    async function communicate(_url) {
         let formData = new FormData(document.forms[0]);
-        let url = "https://swampowl.herokuapp.com/";
         let query = new URLSearchParams(formData);
-        url += "?" + query.toString();
-        let response = await fetch(url);
-        let answer = await response.url;
+        _url += "?" + query.toString();
+        let response = await fetch(_url);
         console.log(await response.text());
-        console.log(answer);
     }
     function handleSubmit() {
+        communicate("https://swampowl.herokuapp.com/");
     }
 })(Server || (Server = {}));
 //# sourceMappingURL=Login.js.map

@@ -33,9 +33,9 @@ var A08Server;
         _response.setHeader("content-type", "text/html; charset=utf-8");
         //Setzt im Header fest, dass Daten von mehreren Domains geladen werden können
         _response.setHeader("Access-Control-Allow-Origin", "*");
-        //gibt die Angefragte URL zurück
+        //gibt vom Router aus die Request zurück
         _response.write(_request.url);
-        // console.log(_request);
+        console.log(_request);
         //beendet die Antwort
         _response.end();
     }
