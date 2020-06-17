@@ -7,8 +7,6 @@ var Server;
         button = document.querySelector("button");
         button.addEventListener("click", handleSubmit);
     }
-    let submitButton = document.getElementById("submitButton");
-    submitButton.addEventListener("click", handleSubmit);
     async function communicate(_url) {
         let formData = new FormData(document.forms[0]);
         let query = new URLSearchParams(formData);

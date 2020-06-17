@@ -6,10 +6,6 @@ namespace Server {
         button = <HTMLButtonElement>document.querySelector("button");
         button.addEventListener("click", handleSubmit);
     }
-
-    let submitButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("submitButton");
-    submitButton.addEventListener("click", handleSubmit);
-
     async function communicate(_url: string): Promise<void> {
         let formData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
