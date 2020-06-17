@@ -1,0 +1,25 @@
+{
+  "name": "gis-sose-2020",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node Aufgabe_08/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Swampowl/GIS-SoSe-2020.git"
+  },
+  "author": "swampowl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Swampowl/GIS-SoSe-2020/issues"
+  },
+  "homepage": "https://github.com/Swampowl/GIS-SoSe-2020#readme",
+  "description": "swampowl",
+  "keywords": [
+    "swampowl"
+  ],
+  "dependencies": {
+    "@types/node": "^14.0.13"
+  }
+}
