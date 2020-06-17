@@ -1,28 +1,50 @@
 import * as Http from "http";
 
 export namespace A08Server {
-  console.log("Starting server");
-  let port: number = Number(process.env.PORT);
-  if (!port)
-    port = 8100;
+    console.log("Starting server");
 
-  let server: Http.Server = Http.createServer();
-  server.addListener("request", handleRequest);
-  server.addListener("listening", handleListen);
-  server.listen(port);
 
-  function handleListen(): void {
-    console.log("Listening");
-  }
+    let port: number = Number(process.env.PORT);
 
-  function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
-    console.log("I hear voices!");
+    // wenn port nicht vorhanden wird er automatisch auf 8100 gesetzt
+    if (!port) {
+        port = 8100;
+    }
+    // Server wird erstellt / initialisiert (HTTP-Addon Extension)
+    let server: Http.Server = Http.createServer();
 
-    _response.setHeader("content-type", "text/html; charset=utf-8");
-    _response.setHeader("Access-Control-Allow-Origin", "*");
 
-    _response.write(_request.url);
+    // Events werden deklariert
+    // request beantwortet Anfragen auf den Port des localhost
+    server.addListener("request", handleRequest);
 
-    _response.end();
-  }
+    //listening wartet auf Anfragen am Port des localhost
+    server.addListener("listening", handleListen);
+
+    // Server wartet/listened nach Verbindungsanfragen auf Port 8100
+    server.listen(port);
+
+
+    // ab hier nurnoch Funktionen
+    // Die Funktionen der Listener werden beschrieben (handleListen)
+    // gibt "Listening" in der Console aus, wenn der Server gestartet wird.
+    function handleListen(): void {
+        console.log("Listening");
+    }
+    // wird ausgeführt wenn eine Anfrage auf dem Localhost ankommt
+    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+        //gibt "Irgendwas wurde geklickt" aus, sobald handleRequest ausgeführt wird
+        console.log("Irgendwas wurde geklickt");
+
+        //Setzt den Wert des des content-types im Protokollheader auf html  mit dem charset utf8
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        //Setzt im Header fest, dass Daten von mehreren Domains geladen werden können
+        _response.setHeader("Access-Control-Allow-Origin", "*");
+
+        //gibt die Angefragte URL zurück
+        _response.write(_request.url);
+
+        //beendet die Antwort
+        _response.end();
+    }
 }

@@ -8,15 +8,18 @@ var A08Server;
     let port = Number(process.env.PORT);
     if (!port)
         port = 8100;
+    // Server wird erstellt
     let server = Http.createServer();
+    // Events werden deklariert
     server.addListener("request", handleRequest);
     server.addListener("listening", handleListen);
     server.listen(port);
+    // only functions from here
     function handleListen() {
         console.log("Listening");
     }
     function handleRequest(_request, _response) {
-        console.log("I hear voices!");
+        console.log("Irgendwas wurde geklickt");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         _response.write(_request.url);
