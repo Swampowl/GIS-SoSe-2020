@@ -14,7 +14,7 @@ var Aufgabe09;
     let formData;
     async function getHTML() {
         formData = new FormData(document.forms[0]);
-        let serverURL = "https://gis2020vr.herokuapp.com";
+        let serverURL = "https://swampowl.herokuapp.com";
         serverURL += "/html";
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
@@ -26,7 +26,7 @@ var Aufgabe09;
     }
     async function getJSON() {
         formData = new FormData(document.forms[0]);
-        let serverURL = "https://gis2020vr.herokuapp.com";
+        let serverURL = "https://swampowl.herokuapp.com";
         serverURL += "/json";
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
