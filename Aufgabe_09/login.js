@@ -6,7 +6,7 @@ var Aufgabe09;
         createButtons();
     }
     function createButtons() {
-        let buttonHTML = document.getElementById("getHTML");
+        let buttonHTML = document.getElementById("submitButton");
         buttonHTML.addEventListener("click", getHTML);
         let buttonJSON = document.getElementById("getJSON");
         buttonJSON.addEventListener("click", getJSON);

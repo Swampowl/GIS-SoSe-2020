@@ -8,7 +8,7 @@ namespace Aufgabe09 {
     }
 
     function createButtons(): void {
-        let buttonHTML: HTMLButtonElement = <HTMLButtonElement>document.getElementById("getHTML");
+        let buttonHTML: HTMLButtonElement = <HTMLButtonElement>document.getElementById("submitButton");
         buttonHTML.addEventListener("click", getHTML);
 
         let buttonJSON: HTMLButtonElement = <HTMLButtonElement>document.getElementById("getJSON");
