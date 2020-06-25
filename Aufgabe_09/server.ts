@@ -2,7 +2,7 @@ import * as Http from "http";
 import * as Url from "url";
 
 export namespace Aufgabe09 {
-  console.log("Server wird gestartet");
+  console.log("Server starten");
   let port: number = Number(process.env.PORT);
   if (!port)
     port = 8100;
