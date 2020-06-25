@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node Aufgabe_08/server.js"
+    "start": "node Aufgabe_09/server.js"
   },
   "repository": {
     "type": "git",
