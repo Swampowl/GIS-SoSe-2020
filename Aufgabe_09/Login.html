@@ -1,38 +1,41 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <script src="login.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swampowl Shop - Login</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <title>Aufgabe09</title>
 </head>
 
 <body>
 
-    <header>
-    </header>
+  <h2>Login</h2>
 
-    <main>
- 
+  <form>
+    <!--action="https://swampowl.herokuapp.com", method="GET"-->
+    <label for="username">Benutzername eingeben</label>
+    <br>
+    <input type="text" id="username" name="username" placeholder="Benutzername">
+    <br>
+    <label for="email">Email eingeben</label>
+    <br>
+    <input type="text" id="email" name="email" placeholder="Email">
+    <br>
+    <label for="password">Password</label> <br>
+    <input type="password" id="password" name="password" value="">
+    <br>
+    <button class="Formular" id="getHTML" type="button">HTML</button>
+    <button class="Formular" id="getJSON" type="button">JSON</button>
+    <br>
+    <input type="button" id="button" value="Login">
+    <br>
 
-        <form method="get" action="https://swampowl.herokuapp.com/">
-            <input type="text" placeholder="Login-Name" name="loginName"><br><br>
-            <input type="password" placeholder="Passwort" name="password"><br><br>
-            <input type="text" placeholder="Wohnort" name="city"><br><br>
-            <input type="text" placeholder="Straße" name="street"><br><br>
-            <button type="Button">Login</button>
-        </form>
-    </main>
-
-    <footer>
-        <hr>
-        <hr>
-        <p>
-            <cite>Swampowl</cite><br>
-        </p>
-    </footer>
+  </form>
+  <p id="serverAntwort">Antwort des Servers bei HTML Anfrage</p>
+  <br>
+  <p id="serverResponse"></p>
 
 </body>
 
