@@ -40,7 +40,7 @@ namespace Aufgabe09 {
         serverURL += "?" + query.toString();
 
         let response: Response = await fetch(serverURL);
-        let responseText: string = await response.json();
+        let responseText: string = await response.json(JSON);
         console.log(responseText);
 
     }
