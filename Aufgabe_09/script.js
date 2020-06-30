@@ -6,9 +6,9 @@ var Aufgabe09;
         createButtons();
     }
     function createButtons() {
-        let buttonHTML = document.getElementById("getHTML");
+        let buttonHTML = document.getElementById("HTMLrun");
         buttonHTML.addEventListener("click", getHTML);
-        let buttonJSON = document.getElementById("getJSON");
+        let buttonJSON = document.getElementById("JSONrun");
         buttonJSON.addEventListener("click", getJSON);
     }
     let formData;
