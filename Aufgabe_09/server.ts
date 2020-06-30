@@ -2,7 +2,7 @@ import * as Http from "http";
 import * as Url from "url";
 
 export namespace Aufgabe09 {
-  console.log("Server starten");
+  console.log("start server");
   let port: number = Number(process.env.PORT);
   if (!port)
     port = 8100;
@@ -24,16 +24,16 @@ export namespace Aufgabe09 {
     if (_request.url) {
       let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
       let path: string | null = url.pathname;
-      if (path == "//html") {
+      if (path == "/html") {
         for (let key in url.query) {
           _response.write(key + ": " + url.query[key] + "<br/>");
         }
       }
-      else if (path == "//json") {
+      else if (path == "/json") {
         let jsonString: string = JSON.stringify(url.query);
         _response.write(jsonString);
       }
-      else if (path == "//A8") {
+      else if (path == "/A8") {
         _response.write(_request.url);
       }
     }
