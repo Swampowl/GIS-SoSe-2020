@@ -1,0 +1,68 @@
+<head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid lightblue;
+            border-collapse: collapse;
+            padding: 0px 10px
+        }
+    </style>
+</head>
+
+<body>
+    <h1>SwampowlDBrowser</h1>
+    <h3>Query parameters</h3>
+    <table>
+        <tr>
+            <th>key</th>
+            <th>current value</th>
+            <th>description</th>
+            <th>remark</th>
+        </tr>
+        <tr>
+            <td>u=</td>
+            <td>undefined</td>
+            <td>username</td>
+            <td>(may be omitted for local database)</td>
+        </tr>
+        <tr>
+            <td>p=</td>
+            <td>undefined</td>
+            <td>password</td>
+            <td>(required when username given)</td>
+        </tr>
+        <tr>
+            <td>a=</td>
+            <td>
+                <strong>missing</strong>
+            </td>
+            <td>database address</td>
+            <td>(required, everything right of '@')</td>
+        </tr>
+        <tr>
+            <td>n=</td>
+            <td>
+                <strong>missing</strong>
+            </td>
+            <td>database name</td>
+            <td>(required)</td>
+        </tr>
+        <tr>
+            <td>c=</td>
+            <td>
+                <strong>missing</strong>
+            </td>
+            <td>collection</td>
+            <td>(required)</td>
+        </tr>
+    </table>
+    <p>
+        Example:
+        <a
+
+        mongo "mongodb+srv://cluster420.simmy.mongodb.net/Test" --username Swampowl
+            href='https://Swampowl.herokuapp.com/?cluster420.simmy.mongodb.net/Test'>Click
+            here</a>
+    </p>
+</body>

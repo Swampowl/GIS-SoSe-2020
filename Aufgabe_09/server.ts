@@ -40,3 +40,5 @@ export namespace Aufgabe09 {
     _response.end();
   }
 }
+
+//mongodb+srv://Swampowl:<Tsv18600>@cluster420.simmy.mongodb.net/<Test>?retryWrites=true&w=majority
