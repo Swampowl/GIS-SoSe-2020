@@ -31,7 +31,7 @@ var Aufgabe09;
                 let jsonString = JSON.stringify(url.query);
                 _response.write(jsonString);
             }
-            else if (path == "/A8") {
+            else if (path == "/A9") {
                 _response.write(_request.url);
             }
         }
