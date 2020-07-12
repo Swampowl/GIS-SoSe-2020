@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <title>Aufgabe11</title>
+</head>
+
+<body>
+
+  <h2>Datenbankeintrag genereieren</h2>
+
+  <form>
+    <!--action="https://swampowl.herokuapp.com", method="GET"-->
+    <p id="databaseAdd">
+
+      <label for="username">Vorname: </label><input type="text" id="username" name="username" placeholder="Vorname">
+      <br>
+      <label for="email">Nachname: </label><input type="text" id="email" name="email" placeholder="Nachname">
+      <br>
+      <label for="password">Matrikelnummer: </label><input type="password" id="password" name="password"
+        placeholder="Matrikelnummer" value="">
+      <br>
+      <button class="Formular" id="HTMLrun" type="button">in die Datenbank speichern</button></p>
+    <br>
+    <h2>Datenbankeinträge abrufen</h2>
+    <button class="Formular" id="HTMLrun" type="button">Datenbank abfragen</button></p>
+  </form>
+  <p id="serverAntwort"></p>
+  <br>
+  <p id="serverResponse"></p>
+
+</body>
+
+</html>
