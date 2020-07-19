@@ -1,0 +1,96 @@
+[
+    [
+        {
+            "category": "cone",
+            "img": "cone/cone.jpg",
+            "name": "Waffel",
+            "beschreibung": "Die klassische Eiswaffel."
+        },
+        {
+            "category": "cone",
+            "img": "cone/mug.jpg",
+            "name": "Becher",
+            "beschreibung": "Der umweltfreundliche Becher."
+        }
+    ],
+    [
+        {
+            "category": "icecream",
+            "img": "",
+            "name": "Cookies",
+            "beschreibung": "fast wie Cookie Dough",
+            "preis": 0.80
+        },
+        {
+            "category": "icecream",
+            "img": "",
+            "name": "Schokolade",
+            "beschreibung": "mit Schokostückchen",
+            "preis": 0.80
+        },  {
+            "category": "icecream",
+            "img": "",
+            "name": "Vanille",
+            "beschreibung": "aus 100% nachhaltigem Anbau",
+            "preis": 0.80
+        },  {
+            "category": "icecream",
+            "img": "",
+            "name": "Haselnuss",
+            "beschreibung": "mit Nussstückchen",
+            "preis": 0.80
+        },  {
+            "category": "icecream",
+            "img": "",
+            "name": "Erdbeer",
+            "beschreibung": "gestern gepflückt",
+            "preis": 0.80
+        },  {
+            "category": "icecream",
+            "img": "",
+            "name": "Schlumpfeis",
+            "beschreibung": "blau wie freitagabend",
+            "preis": 0.80
+        },  {
+            "category": "icecream",
+            "img": "",
+            "name": "Himbeer",
+            "beschreibung": "wie Erdbeer, nur mit Him",
+            "preis": 0.80
+        }
+    ],
+    [
+        {
+            "category": "Topping",
+            "img": "",
+            "name": "Schokostreusel",
+            "beschreibung": "macht das Eis schokoladiger",
+            "preis": 0.50
+        },
+        {
+            "category": "Topping",
+            "img": "",
+            "name": "Walnussstückchen",
+            "beschreibung": "mach 'Knack' beim Essen",
+            "preis": 0.50
+        },   {
+            "category": "Topping",
+            "img": "",
+            "name": "Sahne",
+            "beschreibung": "für mehr Zucker",
+            "preis": 0.50
+        },   {
+            "category": "Topping",
+            "img": "",
+            "name": "Erdbeersauce",
+            "beschreibung": "für mehr Vitamine",
+            "preis": 0.50
+        },   {
+            "category": "Topping",
+            "img": "",
+            "name": "bunte Streusel",
+            "beschreibung": "für mehr Farbvielfalt",
+            "preis": 0.50
+        }
+    ]
+]
