@@ -1,13 +1,10 @@
 namespace eisdiele {
-    export let articleData: Artikel[] = [];
-    export interface Artikel {
-        kategorie: string;
-        image: string;
-        titel: string;
-        ablum: string;
-        interpret: string;
-        audio: string;
-        preis: number;
+    export let articleData: article[] = [];
+    export interface article {
+        category: string;
+        img: string;
+        infotext: string;
+        price: number;
     }
 
     export async function communicate(_url: RequestInfo): Promise<void> {

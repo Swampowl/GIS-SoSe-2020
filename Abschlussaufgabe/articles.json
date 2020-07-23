@@ -3,96 +3,82 @@
         "category": "cone",
         "img": "pics/cone/cone.png",
         "name": "Waffel",
-        "beschreibung": "Die klassische Eiswaffel."
+        "infotext": "Die klassische Eiswaffel."
     },
     {
         "category": "cone",
-        "img": "pics/cone/cone.png",
+        "img": "pics/cone/mug.png",
         "name": "Becher",
-        "beschreibung": "Der umweltfreundliche Becher."
+        "infotext": "Der umweltfreundliche Becher."
     },
     {
         "category": "icecream",
-        "img": "pics/cone/cone.png",
+        "img": "pics/icecream/coconut.png",
         "name": "Kokosnuss",
-        "beschreibung": "mit Karibikflair",
+        "infotext": "mit Karibikflair",
         "preis": 0.80
     },
     {
         "category": "icecream",
-        "img": "pics/cone/cone.png",
+        "img": "pics/icecream/chocolate.png",
         "name": "Schokolade",
-        "beschreibung": "mit Schokostückchen",
+        "infotext": "mit Schokostückchen",
         "preis": 0.80
     },
     {
         "category": "icecream",
-        "img": "pics/cone/cone.png",
+        "img": "pics/icecream/vanilla.png",
         "name": "Vanille",
-        "beschreibung": "aus 100% nachhaltigem Anbau",
+        "infotext": "aus 100% nachhaltigem Anbau",
         "preis": 0.80
     },
     {
         "category": "icecream",
-        "img": "pics/cone/cone.png",
+        "img": "pics/icecream/mint.png",
         "name": "Minze",
-        "beschreibung": "Macht wieder wach",
+        "infotext": "macht wieder wach",
         "preis": 0.80
     },
     {
         "category": "icecream",
-        "img": "pics/cone/cone.png",
+        "img": "pics/icecream/strawberry.png",
         "name": "Erdbeer",
-        "beschreibung": "gestern gepflückt",
+        "infotext": "gestern gepflückt",
         "preis": 0.80
     },
     {
         "category": "icecream",
-        "img": "pics/cone/cone.png",
+        "img": "pics/icecream/smurf.png",
         "name": "Schlumpfeis",
-        "beschreibung": "blau wie freitagabend",
+        "infotext": "1 toter Schlumpf pro 100g",
         "preis": 0.80
     },
     {
         "category": "icecream",
-        "img": "pics/cone/cone.png",
+        "img": "pics/icecream/banana.png",
         "name": "Banane",
-        "beschreibung": "wie Erdbeer, nur Banane",
+        "infotext": "wie Erdbeer, nur Banane",
         "preis": 0.80
-    },
-    {
-        "category": "Topping",
-        "img": "pics/cone/cone.png",
-        "name": "Schokostreusel",
-        "beschreibung": "macht das Eis schokoladiger",
-        "preis": 0.50
-    },
-    {
-        "category": "Topping",
-        "img": "pics/cone/cone.png",
-        "name": "Walnussstückchen",
-        "beschreibung": "mach 'Knack' beim Essen",
-        "preis": 0.50
-    },
-    {
-        "category": "Topping",
-        "img": "pics/cone/cone.png",
-        "name": "Sahne",
-        "beschreibung": "für mehr Zucker",
-        "preis": 0.50
-    },
-    {
-        "category": "Topping",
-        "img": "pics/cone/cone.png",
-        "name": "Erdbeersauce",
-        "beschreibung": "für mehr Vitamine",
-        "preis": 0.50
     },
     {
         "category": "Topping",
         "img": "pics/cone/cone.png",
         "name": "bunte Streusel",
-        "beschreibung": "für mehr Farbvielfalt",
+        "infotext": "wenn das Eis noch nicht bunt genug ist",
+        "preis": 0.50
+    },
+    {
+        "category": "Topping",
+        "img": "pics/toppings/cream.png",
+        "name": "Sahne",
+        "infotext": "für mehr Zucker",
+        "preis": 0.50
+    },
+    {
+        "category": "Topping",
+        "img": "pics/toppings/cherry.png",
+        "name": "Kirschen",
+        "infotext": "2 Kirschen, die Konkurenz hat nur eine",
         "preis": 0.50
     }
 ]
