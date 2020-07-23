@@ -3,10 +3,12 @@ namespace SwampowlShop {
     let cartCounter: number = 0;
     let cartPrice: number = 0;
     let counterP: HTMLParagraphElement;
-    let chaosDiv: HTMLDivElement;
-    let imperiumDiv: HTMLDivElement;
+    let coneDiv: HTMLDivElement;
+    let icecreamDiv: HTMLDivElement;
+    let toppingDiv: HTMLDivElement;
+    let url: string = "Data.json";
 
-    export let categories: Article[][] = [];
+    export let categories: Article[][][] = [];
     export let category: Article[] = [];
 
     export interface Article {
@@ -17,9 +19,9 @@ namespace SwampowlShop {
         preis: number;
     }
 
-    async function communicate(_url: RequestInfo): Promise<void> {
+    function communicate(_url: "articles.json"): Promise<void> {
         let response: Response = await fetch("articles.json");
-        categories = <Article[][]>await response.json();
+        categories = <Article[][][]>await response.json();
         generateArticles(categories);
         console.log("Response", categories);
     }
@@ -27,56 +29,10 @@ namespace SwampowlShop {
     async function init(_event: Event): Promise<void> {
         await communicate("articles.json");
         console.log("Seite geladen");
-        setCategoryClick();
-        counterP = <HTMLParagraphElement>document.querySelector(".flexContainer p");
+
+        counterP = <HTMLDivElement>document.querySelector(".navbar .a .cart_counter");
     }
 
-    function setCategoryClick(): void {
-        let menue: HTMLUListElement = <HTMLUListElement>document.querySelector("#Menü");
-        let max: number = menue.children.length;
-        let listA: HTMLAnchorElement;
-        for (let index: number = 2; index <= max; index++) {
-            listA = <HTMLAnchorElement>document.querySelector("li:nth-child(" + index + ") a");
-            console.log(listA);
-            listA.addEventListener("click", handleCategoryClick.bind(listA));
-        }
-    }
-
-    function handleCategoryClick(this: HTMLAnchorElement, _click: Event): void {
-        let categoryClick: string = <string>this.getAttribute("href");
-        switch (categoryClick) {
-            case "#home":
-                showHome();
-                break;
-            case "#chaos":
-                showChaos();
-                break;
-            case "#imperium":
-                showImperium();
-                break;
-        }
-    }
-
-    function showHome(): void {
-        console.log("h");
-        imperiumDiv.style.display = "block";
-        chaosDiv.style.display = "block";
-    }
-
-    function showChaos(): void {
-        console.log("w");
-        chaosDiv.style.display = "block";
-        imperiumDiv.style.display = "none";
-
-
-    }
-
-    function showImperium(): void {
-        console.log("b");
-
-        chaosDiv.style.display = "none";
-        imperiumDiv.style.display = "block";
-    }
 
     function handleToCartClick(this: Article, _click: MouseEvent): void {
         cartCounter++;
@@ -91,11 +47,11 @@ namespace SwampowlShop {
 
     function deleteItem(this: Article, _click: MouseEvent): void {
 
-        Object.keys(localStorage).forEach(key=> {
+        Object.keys(localStorage).forEach(key => {
             let str = localStorage.getItem(key);
-            if(str != null) {
-                let item =  JSON.parse(str);
-                if(item.name == this.name) {
+            if (str != null) {
+                let item = JSON.parse(str);
+                if (item.name == this.name) {
                     localStorage.removeItem(key);
 
                 }
@@ -112,13 +68,15 @@ namespace SwampowlShop {
         console.log(localStorage)
 
     }
-    function generateArticles(_categories: Article[][]): void {
-        chaosDiv = <HTMLDivElement>document.querySelector("#chaos");
-        imperiumDiv = <HTMLDivElement>document.querySelector("#imperium");
+    function generateArticles(_categories: Article[][][]): void {
+        coneDiv = <HTMLDivElement>document.querySelector(".content .cone");
+        icecreamDiv = <HTMLDivElement>document.querySelector(".content .icecream");
+        toppingDiv = <HTMLDivElement>document.querySelector(".content .toppings");
+
 
         for (let categoryTemp of categories) {
 
-            let div: HTMLDivElement = <HTMLDivElement>document.querySelector(categories.indexOf(categoryTemp) == 0 ? "#chaos" : "#imperium");
+            let div: HTMLDivElement = <HTMLDivElement>document.querySelector(categories.indexOf(categoryTemp) == 0 ? ".content .cone" : ".content .icecream" : ".content .toppings");
             for (let article of categoryTemp) {
                 //Div erzeugen
                 div.appendChild(generateDiv(article, false));
@@ -147,7 +105,7 @@ namespace SwampowlShop {
         newDiv.appendChild(newPreis);
         // Button hinzufügen
         let newButton: HTMLElement = document.createElement("button");
-        if(!inCart) {
+        if (!inCart) {
             newButton.innerHTML = "ins Cart...";
             newButton.addEventListener("click", handleToCartClick.bind(_article));
         }
