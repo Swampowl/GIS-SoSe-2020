@@ -1,18 +1,20 @@
+
 namespace eisdiele {
     window.addEventListener("load", init);
 
     //Objekte erstellen
-    let iceInCart: number = 0;
-    let totalPrice: number = 0;
     let coneDiv: HTMLDivElement;
     let icecreamDiv: HTMLDivElement;
     let toppingDiv: HTMLDivElement;
-    let previewDiv: HTMLDivElement;
     let cartCounter: number = 0;
+    let cartCounterParagraph: HTMLParagraphElement;
     let cartPrice: number = 0.00;
     let pricePreview: number = 0.00;
     let previewCounter: number = 0;
     let previewPrice: HTMLParagraphElement;
+    let coneCounter: number = 0;
+
+    let storageTemp: Storage = localStorage;
 
     interface Article {
 
@@ -45,6 +47,7 @@ namespace eisdiele {
         icecreamDiv = <HTMLDivElement>document.querySelector(".icecream");
         toppingDiv = <HTMLDivElement>document.querySelector(".toppings");
         previewPrice = <HTMLParagraphElement>document.getElementById("currentPricePreview");
+        cartCounterParagraph = <HTMLParagraphElement>document.getElementById("cartCounter");
 
         for (let i: number = 0; i <= _categories.length; i++) {
             let newDiv: HTMLDivElement = document.createElement("div");
@@ -74,80 +77,64 @@ namespace eisdiele {
             }
 
             // hinzufügen AddToIce
-
             function addToIce(_event: Event): void {
                 console.log("Button gedrückt");
-                let previewPicture: HTMLImageElement = document.createElement("img");
-                previewPicture.setAttribute("src", _categories[i].img);
-                previewPicture.setAttribute("id", "icePreview");
-                (<HTMLDivElement>document.querySelector(".preview")).append(previewPicture);
-                localStorage.setItem("name" + previewCounter, _categories[i].name);
-                previewCounter = previewCounter + 1;
-                console.log(localStorage);
-                cartPrice = cartPrice + _categories[i].preis;
-                pricePreview = pricePreview + _categories[i].preis;
-                console.log(cartPrice.toFixed(2));
+                if (coneCounter < 1 && _categories[i].category == "cone") {
+                    coneCounter = coneCounter + 1;
+                    let previewPicture: HTMLImageElement = document.createElement("img");
+                    previewPicture.setAttribute("src", _categories[i].img);
+                    previewPicture.setAttribute("id", "icePreview");
+                    (<HTMLDivElement>document.querySelector(".preview")).append(previewPicture);
+                    localStorage.setItem("name" + previewCounter, _categories[i].name);
+                    previewCounter = previewCounter + 1;
+                    console.log(localStorage);
+                    cartPrice = cartPrice + _categories[i].preis;
+                    pricePreview = pricePreview + _categories[i].preis;
+                    console.log(cartPrice.toFixed(2));
 
-                previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2);
+                    previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2);
+                }
+                if (_categories[i].category != "cone") {
+                    let previewPicture: HTMLImageElement = document.createElement("img");
+                    previewPicture.setAttribute("src", _categories[i].img);
+                    previewPicture.setAttribute("id", "icePreview");
+                    (<HTMLDivElement>document.querySelector(".preview")).append(previewPicture);
+                    localStorage.setItem("name" + previewCounter, _categories[i].name);
+                    previewCounter = previewCounter + 1;
+                    console.log(localStorage);
+                    cartPrice = cartPrice + _categories[i].preis;
+                    pricePreview = pricePreview + _categories[i].preis;
+                    console.log(cartPrice.toFixed(2));
+
+                    previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2);
+
+                }
+
+
             }
+
             document.getElementById("deleteCurrentIce")?.addEventListener("click", deleteIcePreview);
             // DELETE PREVIEW ICE
             function deleteIcePreview(_event: Event): void {
                 document.getElementById("icePreview")?.remove();
                 pricePreview = 0.00;
+                coneCounter = 0;
                 previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2);
 
             }
 
+            document.getElementById("toCart")?.addEventListener("click", toCart);
+            function toCart(_event: Event): void {
+                cartCounter = (cartCounter + 1);
+                document.getElementById("icePreview")?.remove();
+                pricePreview = 0.00;
+                coneCounter = 0;
+                previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2);
+                cartCounterParagraph.innerHTML = `${cartCounter / 12}`;
+            }
 
         }
-
 
     }
-
-
-
-
-    /* 
-    // zum LocalStorage hinzufügen
-    function toStorage(_article: Article): void {
-        let inhalt: string = JSON.stringify(_article);
-        localStorage.setItem(_article.name, inhalt);
-        console.log(localStorage);
-
-    }
-    /*
-        // Anzahl des Warenkorbs hochzählen
-    
-        function handleToCartClick(this: Article, _click: MouseEvent): void {
-            cartCounter++;
-            cartPrice += this.preis;
-            console.log(cartCounter);
-            console.log(cartPrice);
-            console.log(cartCounter);
-            toStorage(this);
-    
-        }
-    
-        // einzelnes Item aus dem Warenkorb löschen
-    
-        function deleteItem(this: Article, _click: MouseEvent): void {
-    
-            Object.keys(localStorage).forEach(key => {
-                let str = localStorage.getItem(key);
-                if (str != null) {
-                    let item = JSON.parse(str);
-                    if (item.name == this.name) {
-                        localStorage.removeItem(key);
-    
-                    }
-                }
-            });
-    
-            let element = document.getElementById(this.name);
-            element?.parentElement?.removeChild(element);
-        }
-    
-    */
 
 }

@@ -63,9 +63,9 @@
     },
     {
         "category": "topping",
-        "img": "pics/cone/cone.png",
-        "name": "bunte Streusel",
-        "infotext": "mehr bunt ist besser",
+        "img": "pics/toppings/waffel.png",
+        "name": "extra Waffel",
+        "infotext": "bringt den extra Crunch",
         "preis": 0.50
     },
     {

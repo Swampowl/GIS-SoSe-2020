@@ -154,7 +154,7 @@
         position: fixed;
         /* Set the navbar to fixed position */
         top: 35%;
-        left: 0;
+        left: 0px;
         /* Position the navbar at the top of the page */
         width: 25%;
         /* Full width */
@@ -171,13 +171,15 @@
         position: fixed;
         /* Set the navbar to fixed position */
         top: 81%;
-        left: 0;
+        left: 0px;
         /* Position the navbar at the top of the page */
         width: 25%;
         /* Full width */
-        height: 10%;
+        height: 13%;
         justify-content: center;
     }
+    
+    #currentPricePreview {}
     /* content */
     
     .content {
