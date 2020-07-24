@@ -34,12 +34,16 @@ var eisdiele;
             newDiv.id = _categories[i].img;
             newDiv.id = _categories[i].infotext;
             newDiv.id = `${_categories[i].preis}`;
+            newDiv.id = _categories[i].category;
             newDiv.innerHTML = `
             <h3>${_categories[i].name}</h3>
             <img src=${_categories[i].img}></img>
             <p class="infotext">${_categories[i].infotext}</p>
-            <p class="preis_shop">${_categories[i].preis.toFixed(2)} €</p>
-            <button class="to_cart_button">hinzufügen</button>`;
+            <p class="preis_shop">${_categories[i].preis.toFixed(2)} €</p>`;
+            let buttonElement = document.createElement("Button");
+            buttonElement.innerHTML = `<p class="to_cart_button">hinzufügen</p>`;
+            buttonElement.addEventListener("click", addToIce);
+            newDiv.appendChild(buttonElement);
             if (_categories[i].category == "cone") {
                 document.querySelector(".cone").append(newDiv);
             }
@@ -48,6 +52,14 @@ var eisdiele;
             }
             if (_categories[i].category == "topping") {
                 document.querySelector(".topping").append(newDiv);
+            }
+            // hinzufügen AddToIce
+            function addToIce(_event) {
+                console.log("Button gedrückt");
+                let previewPicture = document.createElement("img");
+                previewPicture.setAttribute("src", _categories[i].img);
+                previewPicture.setAttribute("id", "icePreview");
+                document.querySelector(".preview").append(previewPicture);
             }
         }
     }
