@@ -11,6 +11,9 @@ var eisdiele;
     let previewDiv;
     let cartCounter = 0;
     let cartPrice = 0.00;
+    let pricePreview = 0.00;
+    let previewCounter = 0;
+    let previewPrice;
     async function init(_event) {
         await communicate("articles.json");
         console.log("Seite geladen");
@@ -27,7 +30,7 @@ var eisdiele;
         coneDiv = document.querySelector(".cone");
         icecreamDiv = document.querySelector(".icecream");
         toppingDiv = document.querySelector(".toppings");
-        previewDiv = document.querySelector(".preview");
+        previewPrice = document.getElementById("currentPricePreview");
         for (let i = 0; i <= _categories.length; i++) {
             let newDiv = document.createElement("div");
             newDiv.id = _categories[i].name;
@@ -40,10 +43,10 @@ var eisdiele;
             <img src=${_categories[i].img}></img>
             <p class="infotext">${_categories[i].infotext}</p>
             <p class="preis_shop">${_categories[i].preis.toFixed(2)} €</p>`;
-            let buttonElement = document.createElement("Button");
-            buttonElement.innerHTML = `<p class="to_cart_button">hinzufügen</p>`;
-            buttonElement.addEventListener("click", addToIce);
-            newDiv.appendChild(buttonElement);
+            let buttonAddElement = document.createElement("Button");
+            buttonAddElement.innerHTML = `<p class="to_preview_button">hinzufügen</p>`;
+            newDiv.appendChild(buttonAddElement);
+            buttonAddElement.addEventListener("click", addToIce);
             if (_categories[i].category == "cone") {
                 document.querySelector(".cone").append(newDiv);
             }
@@ -60,19 +63,32 @@ var eisdiele;
                 previewPicture.setAttribute("src", _categories[i].img);
                 previewPicture.setAttribute("id", "icePreview");
                 document.querySelector(".preview").append(previewPicture);
+                localStorage.setItem("name" + previewCounter, _categories[i].name);
+                previewCounter = previewCounter + 1;
+                console.log(localStorage);
+                cartPrice = cartPrice + _categories[i].preis;
+                pricePreview = pricePreview + _categories[i].preis;
+                console.log(cartPrice.toFixed(2));
+                previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2);
+            }
+            document.getElementById("deleteCurrentIce")?.addEventListener("click", deleteIcePreview);
+            // DELETE PREVIEW ICE
+            function deleteIcePreview(_event) {
+                document.getElementById("icePreview")?.remove();
+                pricePreview = 0.00;
+                previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2);
             }
         }
     }
     /*
-        
-    
-        // zum LocalStorage hinzufügen
-        function toStorage(_article: Article): void {
-            let inhalt: string = JSON.stringify(_article);
-            localStorage.setItem(_article.name, inhalt);
-            console.log(localStorage);
-    
-        }
+    // zum LocalStorage hinzufügen
+    function toStorage(_article: Article): void {
+        let inhalt: string = JSON.stringify(_article);
+        localStorage.setItem(_article.name, inhalt);
+        console.log(localStorage);
+
+    }
+    /*
         // Anzahl des Warenkorbs hochzählen
     
         function handleToCartClick(this: Article, _click: MouseEvent): void {

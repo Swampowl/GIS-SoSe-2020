@@ -161,6 +161,23 @@
         height: 45%;
         justify-content: center;
     }
+    
+    .pricePreview {
+        overflow: hidden;
+        border: solid black;
+        text-align: center;
+        color: black;
+        background-color: rgba(224, 224, 224, 0.6);
+        position: fixed;
+        /* Set the navbar to fixed position */
+        top: 81%;
+        left: 0;
+        /* Position the navbar at the top of the page */
+        width: 25%;
+        /* Full width */
+        height: 10%;
+        justify-content: center;
+    }
     /* content */
     
     .content {

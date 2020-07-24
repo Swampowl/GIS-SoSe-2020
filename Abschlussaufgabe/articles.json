@@ -65,7 +65,7 @@
         "category": "topping",
         "img": "pics/cone/cone.png",
         "name": "bunte Streusel",
-        "infotext": "wenn das Eis noch nicht bunt genug ist",
+        "infotext": "mehr bunt ist besser",
         "preis": 0.50
     },
     {
@@ -79,7 +79,7 @@
         "category": "topping",
         "img": "pics/toppings/cherry.png",
         "name": "Kirschen",
-        "infotext": "2 Kirschen, die Konkurenz hat nur eine",
+        "infotext": "die Konkurenz hat nur eine",
         "preis": 0.50
     }
 ]
