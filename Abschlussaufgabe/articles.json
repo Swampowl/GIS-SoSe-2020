@@ -1,5 +1,4 @@
-[
-    {
+[{
         "category": "cone",
         "img": "pics/cone/cone.png",
         "name": "Waffel",
@@ -31,7 +30,7 @@
         "category": "icecream",
         "img": "pics/icecream/vanilla.png",
         "name": "Vanille",
-        "infotext": "aus 100% nachhaltigem Anbau",
+        "infotext": "aus nachhaltigem Anbau",
         "preis": 0.80
     },
     {
