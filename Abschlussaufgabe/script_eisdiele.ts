@@ -7,80 +7,75 @@ namespace eisdiele {
     let icecreamDiv: HTMLDivElement;
     let toppingDiv: HTMLDivElement;
     let previewDiv: HTMLDivElement;
-    let cartCounter: HTMLParagraphElement;
+    let cartCounter: number = 0;
+    let cartPrice: number = 0.00;
+
+    interface Article {
+
+        category: string;
+        img: string;
+        name: string;
+        infotext: string;
+        preis: number;
+
+    }
 
 
     async function init(_event: Event): Promise<void> {
         await communicate("articles.json");
         console.log("Seite geladen");
-        cartCounter = <HTMLParagraphElement>document.querySelector(".flexContainer p");
     }
-
+//Artikel aus articles.json einschleifen
     async function communicate(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch("articles.json");
-        _categories = <Article[][]>await response.json();
+        let _categories: Article[] = await response.json();
         generateArticles(_categories);
         console.log("Response", _categories);
     }
 
-//Artikel aus articles.json einschleifen
+    
+    // Div für Artikel aufbauen
 
-    function generateArticles(_categories: Article[][]): void {
+    function generateArticles(_categories: Article[]): void {
         coneDiv = <HTMLDivElement>document.querySelector(".cone");
-        icecreamDiv = <HTMLDivElement>document.querySelector(".imperium");
+        icecreamDiv = <HTMLDivElement>document.querySelector(".icecream");
         toppingDiv = <HTMLDivElement>document.querySelector(".toppings");
         previewDiv = <HTMLDivElement>document.querySelector(".preview");
 
-        for (let categoryTemp of _categories) {
-
-            let div: HTMLDivElement = <HTMLDivElement>document.querySelector(_categories.indexOf(categoryTemp) == 0 ? "#chaos" : "#imperium");
-            for (let article of categoryTemp) {
-                //Div erzeugen
-                div.appendChild(generateDiv(article, false));
+        for (let i: number = 0; i <= _categories.length; i++) {
+            let newDiv: HTMLDivElement = document.createElement("div");
+            newDiv.id = _categories[i].name;
+            newDiv.id = _categories[i].img;
+            newDiv.id = _categories[i].infotext;
+            newDiv.id = `${_categories[i].preis}`;
+            newDiv.innerHTML = `
+            <h3>${_categories[i].name}</h3>
+            <img src=${_categories[i].img}></img>
+            <p class="infotext">${_categories[i].infotext}</p>
+            <p class="preis_shop">${_categories[i].preis.toFixed(2)} €</p>
+            <button class="to_cart_button">hinzufügen</button>`;
+            if (_categories[i].category == "cone") {
+                (<HTMLDivElement>document.querySelector(".cone")).append(newDiv);
             }
+            if (_categories[i].category == "icecream") {
+                (<HTMLDivElement>document.querySelector(".icecream")).append(newDiv);
+            }
+            if (_categories[i].category == "topping") {
+                (<HTMLDivElement>document.querySelector(".topping")).append(newDiv);
+            }
+
         }
+
     }
 
-    // Div für Artikel aufbauen
+/*
+    
 
-    export function generateDiv(_article: Article, inCart: boolean): HTMLDivElement {
-        let newDiv: HTMLDivElement = document.createElement("div");
-        //Produktbezeichnung hinzufügen
-        newDiv.id = _article.name;
-        let newH: HTMLHeadingElement = document.createElement("h3");
-        newH.innerHTML = _article.name;
-        newDiv.appendChild(newH);
-        //Produktbild hinzufügen
-        let newImage: HTMLElement = document.createElement("img");
-        newImage.setAttribute("src", _article.img);
-        newImage.setAttribute("class", "pic");
-        newDiv.appendChild(newImage);
-        //Produktbeschreibung hinzufügen
-        let newP: HTMLParagraphElement = document.createElement("p");
-        newP.innerHTML = _article.infotext;
-        newDiv.appendChild(newP);
-        // preis hinzufügen
-        let newPreis: HTMLHeadingElement = document.createElement("h4");
-        newPreis.innerHTML = _article.preis + "€";
-        newDiv.appendChild(newPreis);
-        // Button hinzufügen
-        let newButton: HTMLElement = document.createElement("button");
-        if(!inCart) {
-            newButton.innerHTML = "hinzufügen";
-            newButton.addEventListener("click", handleToCartClick.bind(_article));
-        }
-        else {
-            newButton.innerHTML = "Löschen";
-            newButton.addEventListener("click", deleteItem.bind(_article));
-        }
-        newDiv.appendChild(newButton);
-        return newDiv;
-    }
     // zum LocalStorage hinzufügen
     function toStorage(_article: Article): void {
         let inhalt: string = JSON.stringify(_article);
         localStorage.setItem(_article.name, inhalt);
-        console.log(localStorage)
+        console.log(localStorage);
 
     }
     // Anzahl des Warenkorbs hochzählen
@@ -88,8 +83,7 @@ namespace eisdiele {
     function handleToCartClick(this: Article, _click: MouseEvent): void {
         cartCounter++;
         cartPrice += this.preis;
-        console.log(counterP);
-        counterP.innerHTML = cartCounter <= 0 ? "" : cartCounter + "";
+        console.log(cartCounter);
         console.log(cartPrice);
         console.log(cartCounter);
         toStorage(this);
@@ -100,11 +94,11 @@ namespace eisdiele {
 
     function deleteItem(this: Article, _click: MouseEvent): void {
 
-        Object.keys(localStorage).forEach(key=> {
+        Object.keys(localStorage).forEach(key => {
             let str = localStorage.getItem(key);
-            if(str != null) {
-                let item =  JSON.parse(str);
-                if(item.name == this.name) {
+            if (str != null) {
+                let item = JSON.parse(str);
+                if (item.name == this.name) {
                     localStorage.removeItem(key);
 
                 }
@@ -115,6 +109,6 @@ namespace eisdiele {
         element?.parentElement?.removeChild(element);
     }
 
-
+*/
 
 }

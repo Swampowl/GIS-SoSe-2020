@@ -3,13 +3,15 @@
         "category": "cone",
         "img": "pics/cone/cone.png",
         "name": "Waffel",
-        "infotext": "Die klassische Eiswaffel."
+        "infotext": "Die klassische Eiswaffel.",
+        "preis": 0.20
     },
     {
         "category": "cone",
         "img": "pics/cone/mug.png",
         "name": "Becher",
-        "infotext": "Der umweltfreundliche Becher."
+        "infotext": "Der umweltfreundliche Becher.",
+        "preis": 0.20
     },
     {
         "category": "icecream",
@@ -61,21 +63,21 @@
         "preis": 0.80
     },
     {
-        "category": "Topping",
+        "category": "topping",
         "img": "pics/cone/cone.png",
         "name": "bunte Streusel",
         "infotext": "wenn das Eis noch nicht bunt genug ist",
         "preis": 0.50
     },
     {
-        "category": "Topping",
+        "category": "topping",
         "img": "pics/toppings/cream.png",
         "name": "Sahne",
         "infotext": "für mehr Zucker",
         "preis": 0.50
     },
     {
-        "category": "Topping",
+        "category": "topping",
         "img": "pics/toppings/cherry.png",
         "name": "Kirschen",
         "infotext": "2 Kirschen, die Konkurenz hat nur eine",

@@ -24,4 +24,10 @@ namespace eisdiele {
       localStorage.clear();
       container.innerHTML = "";
     }
+    // ORDER CONFIRMATION POPUP
+
+    function orderConfirmation() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+      }
   }

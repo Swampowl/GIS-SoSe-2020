@@ -9,96 +9,89 @@ var eisdiele;
     let icecreamDiv;
     let toppingDiv;
     let previewDiv;
-    let cartCounter;
+    let cartCounter = 0;
+    let cartPrice = 0.00;
     async function init(_event) {
         await communicate("articles.json");
         console.log("Seite geladen");
-        cartCounter = document.querySelector(".flexContainer p");
     }
+    //Artikel aus articles.json einschleifen
     async function communicate(_url) {
         let response = await fetch("articles.json");
-        _categories = await response.json();
+        let _categories = await response.json();
         generateArticles(_categories);
         console.log("Response", _categories);
     }
-    //Artikel aus articles.json einschleifen
+    // Div für Artikel aufbauen
     function generateArticles(_categories) {
         coneDiv = document.querySelector(".cone");
-        icecreamDiv = document.querySelector(".imperium");
+        icecreamDiv = document.querySelector(".icecream");
         toppingDiv = document.querySelector(".toppings");
         previewDiv = document.querySelector(".preview");
-        for (let categoryTemp of _categories) {
-            let div = document.querySelector(_categories.indexOf(categoryTemp) == 0 ? "#chaos" : "#imperium");
-            for (let article of categoryTemp) {
-                //Div erzeugen
-                div.appendChild(generateDiv(article, false));
+        for (let i = 0; i <= _categories.length; i++) {
+            let newDiv = document.createElement("div");
+            newDiv.id = _categories[i].name;
+            newDiv.id = _categories[i].img;
+            newDiv.id = _categories[i].infotext;
+            newDiv.id = `${_categories[i].preis}`;
+            newDiv.innerHTML = `
+            <h3>${_categories[i].name}</h3>
+            <img src=${_categories[i].img}></img>
+            <p class="infotext">${_categories[i].infotext}</p>
+            <p class="preis_shop">${_categories[i].preis.toFixed(2)} €</p>
+            <button class="to_cart_button">hinzufügen</button>`;
+            if (_categories[i].category == "cone") {
+                document.querySelector(".cone").append(newDiv);
+            }
+            if (_categories[i].category == "icecream") {
+                document.querySelector(".icecream").append(newDiv);
+            }
+            if (_categories[i].category == "topping") {
+                document.querySelector(".topping").append(newDiv);
             }
         }
     }
-    // Div für Artikel aufbauen
-    function generateDiv(_article, inCart) {
-        let newDiv = document.createElement("div");
-        //Produktbezeichnung hinzufügen
-        newDiv.id = _article.name;
-        let newH = document.createElement("h3");
-        newH.innerHTML = _article.name;
-        newDiv.appendChild(newH);
-        //Produktbild hinzufügen
-        let newImage = document.createElement("img");
-        newImage.setAttribute("src", _article.img);
-        newImage.setAttribute("class", "pic");
-        newDiv.appendChild(newImage);
-        //Produktbeschreibung hinzufügen
-        let newP = document.createElement("p");
-        newP.innerHTML = _article.infotext;
-        newDiv.appendChild(newP);
-        // preis hinzufügen
-        let newPreis = document.createElement("h4");
-        newPreis.innerHTML = _article.preis + "€";
-        newDiv.appendChild(newPreis);
-        // Button hinzufügen
-        let newButton = document.createElement("button");
-        if (!inCart) {
-            newButton.innerHTML = "hinzufügen";
-            newButton.addEventListener("click", handleToCartClick.bind(_article));
+    /*
+        
+    
+        // zum LocalStorage hinzufügen
+        function toStorage(_article: Article): void {
+            let inhalt: string = JSON.stringify(_article);
+            localStorage.setItem(_article.name, inhalt);
+            console.log(localStorage);
+    
         }
-        else {
-            newButton.innerHTML = "Löschen";
-            newButton.addEventListener("click", deleteItem.bind(_article));
+        // Anzahl des Warenkorbs hochzählen
+    
+        function handleToCartClick(this: Article, _click: MouseEvent): void {
+            cartCounter++;
+            cartPrice += this.preis;
+            console.log(cartCounter);
+            console.log(cartPrice);
+            console.log(cartCounter);
+            toStorage(this);
+    
         }
-        newDiv.appendChild(newButton);
-        return newDiv;
-    }
-    eisdiele.generateDiv = generateDiv;
-    // zum LocalStorage hinzufügen
-    function toStorage(_article) {
-        let inhalt = JSON.stringify(_article);
-        localStorage.setItem(_article.name, inhalt);
-        console.log(localStorage);
-    }
-    // Anzahl des Warenkorbs hochzählen
-    function handleToCartClick(_click) {
-        cartCounter++;
-        cartPrice += this.preis;
-        console.log(counterP);
-        counterP.innerHTML = cartCounter <= 0 ? "" : cartCounter + "";
-        console.log(cartPrice);
-        console.log(cartCounter);
-        toStorage(this);
-    }
-    // einzelnes Item aus dem Warenkorb löschen
-    function deleteItem(_click) {
-        Object.keys(localStorage).forEach(key => {
-            let str = localStorage.getItem(key);
-            if (str != null) {
-                let item = JSON.parse(str);
-                if (item.name == this.name) {
-                    localStorage.removeItem(key);
+    
+        // einzelnes Item aus dem Warenkorb löschen
+    
+        function deleteItem(this: Article, _click: MouseEvent): void {
+    
+            Object.keys(localStorage).forEach(key => {
+                let str = localStorage.getItem(key);
+                if (str != null) {
+                    let item = JSON.parse(str);
+                    if (item.name == this.name) {
+                        localStorage.removeItem(key);
+    
+                    }
                 }
-            }
-        });
-        let element = document.getElementById(this.name);
-        element?.parentElement?.removeChild(element);
-    }
+            });
+    
+            let element = document.getElementById(this.name);
+            element?.parentElement?.removeChild(element);
+        }
+    
+    */
 })(eisdiele || (eisdiele = {}));
 //# sourceMappingURL=script_eisdiele.js.map
