@@ -5,6 +5,16 @@ html {
     background-image: url("pics/back_full.jpg");
 }
 
+#cartCounter
+{
+    position: fixed;
+    background-color: #74a8fc;
+    overflow: show;
+    top:6%;
+    left:50%;
+    border-radius: 5px 5px;
+}
+
 .purchase {
     position: relative;
     text-align: center;
