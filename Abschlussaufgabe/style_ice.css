@@ -32,7 +32,6 @@
         width: 30%;
         height: 30%;
     }
-    
     #icePreviewTopping {
         height: 10%;
         width: 10%;
@@ -56,7 +55,6 @@
         left: 43%;
         position: absolute;
     }
-    
     .cone img {
         height: 30%;
         width: 30%
@@ -162,7 +160,29 @@
         display: inline-block;
         font-size: 10px;
     }
-    
+    .purchase button {
+        bottom: 5%;
+        background-color: #123;
+        color: white;
+        margin: 5px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+    }
+    .purchase button:active {
+        bottom: 5%;
+        background-color: white;
+        color: #123;
+        margin: 5px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+    }
+
     #icecream button {
         bottom: 5%;
         background-color: #123;
