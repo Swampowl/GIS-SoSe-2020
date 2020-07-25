@@ -41,11 +41,11 @@ var eisdiele;
         cartCounterParagraph = document.getElementById("cartCounter");
         for (let i = 0; i <= _categories.length; i++) {
             let newDiv = document.createElement("div");
-            //   newDiv.id = _categories[i].name;
-            //  newDiv.id = _categories[i].img;
-            //  newDiv.id = _categories[i].infotext;
-            //  newDiv.id = `${_categories[i].preis}`;
-            //  newDiv.id = _categories[i].category;
+            newDiv.id = _categories[i].name;
+            newDiv.id = _categories[i].img;
+            newDiv.id = _categories[i].infotext;
+            newDiv.id = `${_categories[i].preis}`;
+            newDiv.id = _categories[i].category;
             newDiv.innerHTML = `
             <h3>${_categories[i].name}</h3>
             <img src=${_categories[i].img}></img>

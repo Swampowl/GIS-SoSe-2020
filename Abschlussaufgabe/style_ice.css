@@ -4,7 +4,7 @@
         background-color: black;
         background-image: url("pics/back_full.jpg");
     }
-
+    
     #cone {
         display: inline-table;
         left: 20%;
@@ -15,15 +15,15 @@
         border: black;
         border-style: solid;
     }
-
+    
     .cone {
         left: 0px;
         margin: 5px;
         width: auto;
         height: 30%;
     }
-
-    .preview img{
+    
+    .preview img {
         position: absolute;
         margin-top: 0;
         flex-direction: column;
@@ -32,15 +32,15 @@
         width: 30%;
         height: 30%;
     }
-
-  /*  #icePreviewTopping {
+    
+    #icePreviewTopping {
         height: 10%;
         width: 10%;
         top: 40%;
         left: 48%;
         position: absolute;
     }
-
+    
     #icePreviewIcecream {
         height: 30%;
         width: 30%;
@@ -48,7 +48,7 @@
         left: 38%;
         position: absolute;
     }
-
+    
     #icePreviewBase {
         height: 20%;
         width: 20%;
@@ -56,19 +56,19 @@
         left: 43%;
         position: absolute;
     }
-*/
+    
     .cone img {
         height: 30%;
         width: 30%
     }
-
+    
     .icecream {
         left: 0px;
         margin: 5px;
         width: auto;
         height: 30%;
     }
-
+    
     #icecream {
         display: inline-table;
         left: 20%;
@@ -79,19 +79,19 @@
         border: black;
         border-style: solid;
     }
-
+    
     #icecream img {
         height: 20%;
         width: 20%
     }
-
+    
     .topping {
         left: 0px;
         margin: 5px;
         width: auto;
         height: 30%;
     }
-
+    
     #topping {
         display: inline-table;
         left: 20%;
@@ -102,13 +102,13 @@
         border: black;
         border-style: solid;
     }
-
+    
     .topping img {
         left: 50%;
         height: 20%;
         width: 20%
     }
-
+    
     #cartCounter {
         position: fixed;
         color: white;
@@ -122,13 +122,13 @@
         border-color: white;
         border-width: 1px;
     }
-
+    
     .purchase {
         position: relative;
         text-align: center;
         top: 100px;
     }
-
+    
     .pricePreview #deleteCurrentIce {
         background-color: #123;
         color: white;
@@ -138,7 +138,7 @@
         display: inline-block;
         font-size: 25px;
     }
-
+    
     #cone button {
         bottom: 5%;
         background-color: #123;
@@ -150,6 +150,7 @@
         display: inline-block;
         font-size: 10px;
     }
+    
     #cone button:active {
         bottom: 5%;
         background-color: white;
@@ -161,7 +162,7 @@
         display: inline-block;
         font-size: 10px;
     }
-
+    
     #icecream button {
         bottom: 5%;
         background-color: #123;
@@ -173,6 +174,7 @@
         display: inline-block;
         font-size: 10px;
     }
+    
     #icecream button:active {
         bottom: 5%;
         background-color: white;
@@ -184,7 +186,7 @@
         display: inline-block;
         font-size: 10px;
     }
-
+    
     #topping button {
         bottom: 5%;
         background-color: #123;
@@ -196,6 +198,7 @@
         display: inline-block;
         font-size: 10px;
     }
+    
     #topping button:active {
         bottom: 5%;
         background-color: white;
@@ -207,7 +210,8 @@
         display: inline-block;
         font-size: 10px;
     }
-    #orderConfirmation{
+    
+    #orderConfirmation {
         bottom: 5%;
         background-color: #123;
         color: white;
@@ -218,6 +222,7 @@
         display: inline-block;
         font-size: 10px;
     }
+    
     #orderConfirmation:active {
         bottom: 5%;
         background-color: white;
@@ -229,8 +234,7 @@
         display: inline-block;
         font-size: 10px;
     }
-
-
+    
     .pricePreview #toCart {
         height: 5%;
         background-color: #123;
@@ -241,7 +245,8 @@
         display: inline-block;
         font-size: 25px;
     }
-    .pricePreview #toCart{
+    
+    .pricePreview #toCart {
         bottom: 5%;
         background-color: #123;
         color: white;
@@ -252,7 +257,8 @@
         display: inline-block;
         font-size: 10px;
     }
-    .pricePreview #toCart:active{
+    
+    .pricePreview #toCart:active {
         bottom: 5%;
         background-color: white;
         color: #123;
@@ -263,8 +269,8 @@
         display: inline-block;
         font-size: 10px;
     }
-
-    .pricePreview #deleteCurrentIce{
+    
+    .pricePreview #deleteCurrentIce {
         bottom: 5%;
         background-color: #123;
         color: white;
@@ -274,9 +280,9 @@
         text-decoration: none;
         display: inline-block;
         font-size: 10px;
-
     }
-    .pricePreview #deleteCurrentIce:active{
+    
+    .pricePreview #deleteCurrentIce:active {
         bottom: 5%;
         background-color: white;
         color: #123;
@@ -286,11 +292,9 @@
         text-decoration: none;
         display: inline-block;
         font-size: 10px;
-
     }
-
     /* PREVIEW */
-
+    
     .preview {
         overflow: hidden;
         border: solid black;
@@ -304,7 +308,7 @@
         height: 30%;
         justify-content: center;
     }
-
+    
     .pricePreview {
         overflow: hidden;
         border: solid black;
@@ -318,30 +322,27 @@
         height: 20%;
         justify-content: center;
     }
-
+    
     .content {
         position: relative;
         width: auto;
         top: 110px;
         text-align: center;
     }
-
+    
     body {
         text-align: center;
         top: 150px;
     }
-
     /* START NAVBAR */
-
     /* START NAVBAR */
-
     /* START NAVBAR */
-
+    
     .topbox .headline {
         color: white;
         font-size: 40px;
     }
-
+    
     .topbox {
         overflow: hidden;
         left: 0;
@@ -357,9 +358,8 @@
         height: 70px;
         justify-content: center;
     }
-
     /* The navigation bar */
-
+    
     .navbar {
         left: 0;
         overflow: hidden;
@@ -372,9 +372,8 @@
         /* Full width */
         height: auto;
     }
-
     /* Links inside the navbar */
-
+    
     .navbar a {
         float: left;
         display: block;
@@ -384,36 +383,32 @@
         padding: 5px 13.86%;
         text-decoration: none;
     }
-
+    
     .navbar a.active {
         background-color: #f2f2f2;
         color: #123;
     }
-
+    
     .navbar a:hover {
         background: #ddd;
         color: #123;
     }
-
     /* ENDE NAVBAR */
-
     /* ENDE NAVBAR */
-
     /* ENDE NAVBAR */
-
     /* POPUP ORDER CONFIRMATION */
-
+    
     @media screen and (max-width:1250px) {
         .container ul li {
             width: 40%;
             margin: 40px;
         }
     }
-
     /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
-
+    
     @media screen and (max-width: 600) {}
-
-    @media screen and (min-width: 601, max-width 1024) {}
-
+    
+    @media screen and (min-width: 601,
+    max-width 1024) {}
+    
     @media screen and (min-width: 1025) {}
