@@ -100,7 +100,7 @@ var eisdiele;
                         localStorage.setItem(_categories[i].key, _categories[i].name);
                         localStorageCount = localStorageCount + 1;
                     }
-                    previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2);
+                    previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
                 }
                 if (_categories[i].category != "cone") {
                     if (_categories[i].category == "cone") {
@@ -139,7 +139,7 @@ var eisdiele;
                         localStorage.setItem(_categories[i].key, _categories[i].name);
                         localStorageCount = localStorageCount + 1;
                     }
-                    previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2);
+                    previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
                 }
                 console.log(localStorage);
             }
@@ -153,7 +153,7 @@ var eisdiele;
             document.getElementById("icePreviewBase")?.remove();
             pricePreview = 0.00;
             coneCounter = 0;
-            previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2);
+            previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
             cartCounterParagraph.innerHTML = `${cartCounter}`;
             cartStorage = localStorage;
             console.log(cartStorage);
@@ -167,7 +167,7 @@ var eisdiele;
             cartPrice = cartPrice - pricePreview;
             pricePreview = 0.00;
             coneCounter = 0;
-            previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2);
+            previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
         }
     }
 })(eisdiele || (eisdiele = {}));

@@ -124,7 +124,7 @@ namespace eisdiele {
                         localStorageCount = localStorageCount + 1;
                     }
 
-                    previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2);
+                    previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2) + " €";
                 }
                 if (_categories[i].category != "cone") {
                     if (_categories[i].category == "cone") {
@@ -164,7 +164,7 @@ namespace eisdiele {
                         localStorageCount = localStorageCount + 1;
                     }
 
-                    previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2);
+                    previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2) + " €";
 
                 }
                 console.log(localStorage);
@@ -174,7 +174,7 @@ namespace eisdiele {
             document.getElementById("deleteCurrentIce")?.addEventListener("click", deleteIcePreview);
 
         }
-        
+
         function toCart(_event: Event): void {
             cartCounter = (cartCounter + 1);
             document.getElementById("icePreviewTopping")?.remove();
@@ -182,14 +182,14 @@ namespace eisdiele {
             document.getElementById("icePreviewBase")?.remove();
             pricePreview = 0.00;
             coneCounter = 0;
-            previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2);
+            previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2) + " €";
             cartCounterParagraph.innerHTML = `${cartCounter}`;
             cartStorage = localStorage;
             console.log(cartStorage);
             localStorage.clear();
         }
         // DELETE PREVIEW ICE
-        
+
         function deleteIcePreview(_event: Event): void {
             document.getElementById("icePreviewTopping")?.remove();
             document.getElementById("icePreviewIcecream")?.remove();
@@ -197,7 +197,7 @@ namespace eisdiele {
             cartPrice = cartPrice - pricePreview;
             pricePreview = 0.00;
             coneCounter = 0;
-            previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2);
+            previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2) + " €";
 
 
         }
