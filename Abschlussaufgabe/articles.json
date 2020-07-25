@@ -3,83 +3,95 @@
         "img": "pics/cone/cone.png",
         "name": "Waffel",
         "infotext": "Die klassische Eiswaffel.",
-        "preis": 0.20
+        "preis": 0.20,
+        "key":"A1"
     },
     {
         "category": "cone",
         "img": "pics/cone/mug.png",
         "name": "Becher",
         "infotext": "Der umweltfreundliche Becher.",
-        "preis": 0.20
+        "preis": 0.20,
+        "key":"A2"
     },
     {
         "category": "icecream",
         "img": "pics/icecream/coconut.png",
         "name": "Kokosnuss",
         "infotext": "mit Karibikflair",
-        "preis": 0.80
+        "preis": 0.80,
+        "key":"B1"
     },
     {
         "category": "icecream",
         "img": "pics/icecream/chocolate.png",
         "name": "Schokolade",
         "infotext": "mit Schokostückchen",
-        "preis": 0.80
+        "preis": 0.80,
+        "key":"B2"
     },
     {
         "category": "icecream",
         "img": "pics/icecream/vanilla.png",
         "name": "Vanille",
         "infotext": "aus nachhaltigem Anbau",
-        "preis": 0.80
+        "preis": 0.80,
+        "key":"B3"
     },
     {
         "category": "icecream",
         "img": "pics/icecream/mint.png",
         "name": "Minze",
         "infotext": "macht wieder wach",
-        "preis": 0.80
+        "preis": 0.80,
+        "key":"B4"
     },
     {
         "category": "icecream",
         "img": "pics/icecream/strawberry.png",
         "name": "Erdbeer",
         "infotext": "gestern gepflückt",
-        "preis": 0.80
+        "preis": 0.80,
+        "key":"B5"
     },
     {
         "category": "icecream",
         "img": "pics/icecream/smurf.png",
         "name": "Schlumpfeis",
         "infotext": "1 toter Schlumpf pro 100g",
-        "preis": 0.80
+        "preis": 0.80,
+        "key":"B6"
     },
     {
         "category": "icecream",
         "img": "pics/icecream/banana.png",
         "name": "Banane",
         "infotext": "wie Erdbeer, nur Banane",
-        "preis": 0.80
+        "preis": 0.80,
+        "key":"B7"
     },
     {
         "category": "topping",
         "img": "pics/toppings/waffel.png",
         "name": "extra Waffel",
         "infotext": "bringt den extra Crunch",
-        "preis": 0.50
+        "preis": 0.50,
+        "key":"C1"
     },
     {
         "category": "topping",
         "img": "pics/toppings/cream.png",
         "name": "Sahne",
         "infotext": "für mehr Zucker",
-        "preis": 0.50
+        "preis": 0.50,
+        "key":"C2"
     },
     {
         "category": "topping",
         "img": "pics/toppings/cherry.png",
         "name": "Kirschen",
         "infotext": "die Konkurenz hat nur eine",
-        "preis": 0.50
+        "preis": 0.50,
+        "key":"C3"
     }
 ]
