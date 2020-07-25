@@ -111,32 +111,37 @@ var eisdiele;
                 }
                 previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
             }
+            document.getElementById("toCart")?.addEventListener("click", toCart);
+            document.getElementById("deleteCurrentIce")?.addEventListener("click", deleteIcePreview);
             console.log(localStorage);
         }
-        document.getElementById("toCart")?.addEventListener("click", toCart);
-        document.getElementById("deleteCurrentIce")?.addEventListener("click", deleteIcePreview);
     }
     function toCart(_event) {
         cartCounter = (cartCounter + 1);
-        document.getElementById("icePreviewTopping")?.remove();
-        document.getElementById("icePreviewIcecream")?.remove();
-        document.getElementById("icePreviewBase")?.remove();
         //ConeType prüfen & Preis übergeben
         iceProduct.preis = pricePreview;
         localStorage.setItem(Date.now().toString(), JSON.stringify(iceProduct));
-        pricePreview = 0.00;
-        previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
         cartCounterParagraph.innerHTML = `${cartCounter}`;
+        deleteIcePreview(_event);
         console.log(cartStorage);
     }
     // DELETE PREVIEW ICE
     function deleteIcePreview(_event) {
-        document.getElementById("icePreviewTopping")?.remove();
-        document.getElementById("icePreviewIcecream")?.remove();
-        document.getElementById("icePreviewBase")?.remove();
-        cartPrice = cartPrice - pricePreview;
-        pricePreview = 0.00;
-        previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
+        console.log(_event.currentTarget);
+        if (_event.currentTarget.id === "toCart") {
+            console.log(cartPrice);
+        }
+        else {
+            cartPrice = cartPrice - pricePreview;
+            console.log(cartPrice);
+        }
+        let newPreview = document.querySelector(".preview");
+        if (newPreview != null) {
+            newPreview.innerHTML = "Vorschau: <br>";
+            pricePreview = 0.00;
+            previewPrice = document.getElementById("currentPricePreview");
+            previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
+        }
     }
 })(eisdiele || (eisdiele = {}));
 //# sourceMappingURL=script_eisdiele.js.map

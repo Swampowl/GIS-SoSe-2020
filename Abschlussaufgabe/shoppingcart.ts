@@ -1,8 +1,8 @@
 namespace eisdiele {
-  import IceProduct  from "./script_eisdiele";
+  // import * as _ from "./script_eisdiele";
+
   let container: HTMLDivElement;
-  
-  let article: IceProduct;
+  let article: eisdiele.IceProduct;
 
 
   window.addEventListener("load", init);
@@ -20,17 +20,24 @@ namespace eisdiele {
       let articleKey: string = <string>localStorage.key(index);
       let jsonString: string = <string>localStorage.getItem(articleKey);
       console.log(jsonString);
-      article = <IceProduct>JSON.parse(jsonString);
-      container.appendChild(generateArticles(article));
+      article = <eisdiele.IceProduct>JSON.parse(jsonString);
+      let element: HTMLDivElement = generateArticles(article);
+      container.appendChild(element);
+      element.querySelector("#deleteSingleOrder")?.addEventListener("click", deleteSingleOrder);
     }
   }
 
-  function generateArticles(article: IceProduct): HTMLDivElement {
+  function generateArticles(article: eisdiele.IceProduct): HTMLDivElement {
     let cartOrderDiv: HTMLDivElement = document.createElement("div");
     // cartOrderDiv.setAttribute("key", article.key);
-    cartOrderDiv.innerHTML = `<ul><li>${article.coneType}</li></ul>`;
+    cartOrderDiv.innerHTML = `<ul><li>${article.coneType}, ${article.ice},${article.preis?.toFixed(2)}</li></ul><br>
+    <button id="deleteSingleOrder">Eis löschen</button>`;
     return cartOrderDiv;
   }
+  function deleteSingleOrder(_event: Event): void {
+    console.log(((<HTMLElement>_event.currentTarget).parentElement));
+    }
+
 
   function deleteAll(): void {
     localStorage.clear();
