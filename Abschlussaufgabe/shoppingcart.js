@@ -4,7 +4,6 @@ var eisdiele;
     // import * as _ from "./script_eisdiele";
     let container;
     let sendOrderButton = document.getElementById("cartOrderConfirmation");
-    let formData;
     let article;
     let prodctCount = 0;
     let counter = parseInt(localStorage.getItem("counter"));
@@ -14,8 +13,9 @@ var eisdiele;
     window.addEventListener("load", init);
     sendOrderButton.addEventListener("click", sendData);
     async function sendData() {
+        let formData;
         formData = new FormData(document.forms[0]);
-        let _url = "https://localhost:8100";
+        let _url = "https://git.heroku.com/swampowl.git";
         let query = new URLSearchParams(formData);
         _url = _url + "/send" + "?" + query.toString();
         await fetch(_url);

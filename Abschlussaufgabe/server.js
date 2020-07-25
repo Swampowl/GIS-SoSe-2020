@@ -7,7 +7,7 @@ const Mongo = require("mongodb");
 var eisdiele;
 (function (eisdiele) {
     let studentList;
-    let databaseUrl = "mongodb+srv://Swampowl:<Tsv18600>@gis-sose2020.0rsjj.mongodb.net/<SwampowlEisdiele>?retryWrites=true&w=majority";
+    let databaseUrl = "mongodb+srv://Swampowl:Tsv18600@gis-sose2020.0rsjj.mongodb.net/<SwampowlEisdiele>?retryWrites=true&w=majority";
     //let databaseUrl: string = "mongodb://localhost: 27017";
     console.log("Starting server");
     //Port Number wird unter port gespeichert
