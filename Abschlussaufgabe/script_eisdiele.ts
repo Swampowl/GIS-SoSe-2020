@@ -1,6 +1,12 @@
 
 namespace eisdiele {
     window.addEventListener("load", init);
+    window.addEventListener("beforeunload", (event) => {
+        // Cancel the event as stated by the standard.
+        event.preventDefault();
+        // Chrome requires returnValue to be set.
+        event.returnValue = "Ihre Betellungen werden beim Verlassen der Seite gelöscht!";
+    });
 
     //Objekte erstellen
     let coneDiv: HTMLDivElement;
@@ -55,11 +61,11 @@ namespace eisdiele {
 
         for (let i: number = 0; i <= _categories.length; i++) {
             let newDiv: HTMLDivElement = document.createElement("div");
-            newDiv.id = _categories[i].name;
-            newDiv.id = _categories[i].img;
-            newDiv.id = _categories[i].infotext;
-            newDiv.id = `${_categories[i].preis}`;
-            newDiv.id = _categories[i].category;
+        //   newDiv.id = _categories[i].name;
+        //  newDiv.id = _categories[i].img;
+        //  newDiv.id = _categories[i].infotext;
+        //  newDiv.id = `${_categories[i].preis}`;
+        //  newDiv.id = _categories[i].category;
             newDiv.innerHTML = `
             <h3>${_categories[i].name}</h3>
             <img src=${_categories[i].img}></img>
