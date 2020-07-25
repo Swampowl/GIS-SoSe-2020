@@ -15,7 +15,7 @@ var SwampowlShop;
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
             article = JSON.parse(jsonString);
-            container.appendChild(SwampowlShop.generateDiv(article, true));
+            container.appendChild(generateDiv(article, true));
         }
     }
     function deleteAll() {

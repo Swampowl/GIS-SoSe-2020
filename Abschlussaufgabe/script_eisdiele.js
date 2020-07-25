@@ -2,12 +2,6 @@
 var eisdiele;
 (function (eisdiele) {
     window.addEventListener("load", init);
-    window.addEventListener("beforeunload", (event) => {
-        // Cancel the event as stated by the standard.
-        event.preventDefault();
-        // Chrome requires returnValue to be set.
-        event.returnValue = "Ihre Betellungen werden beim Verlassen der Seite gelöscht!";
-    });
     //Objekte erstellen
     let coneDiv;
     let icecreamDiv;
@@ -18,9 +12,8 @@ var eisdiele;
     let pricePreview = 0.00;
     let previewCounter = 0;
     let previewPrice;
-    let coneCounter = 0;
     let cartStorage;
-    let localStorageCount = 0;
+    let iceProduct;
     async function init(_event) {
         await communicate("articles.json");
         console.log("Seite geladen");
@@ -67,11 +60,18 @@ var eisdiele;
             // hinzufügen AddToIce
             // hinzufügen AddToIce
             function addToIce(_event) {
-                console.log("Button gedrückt");
-                if (coneCounter < 1 && _categories[i].category == "cone") {
-                    coneCounter = coneCounter + 1;
-                    if (_categories[i].category == "cone") {
-                        let previewPicture = document.createElement("img");
+                if (iceProduct === undefined) {
+                    iceProduct = {};
+                }
+                if (_categories[i].category == "cone") {
+                    iceProduct.coneType = _categories[i].name;
+                    // Gibt es schon ein Cone?
+                    let previewPicture = document.querySelector("#icePreviewBase");
+                    if (previewPicture != null) {
+                        previewPicture.setAttribute("src", _categories[i].img);
+                    }
+                    else {
+                        previewPicture = document.createElement("img");
                         previewPicture.setAttribute("src", _categories[i].img);
                         previewPicture.setAttribute("id", "icePreviewBase");
                         document.querySelector(".preview").append(previewPicture);
@@ -79,102 +79,64 @@ var eisdiele;
                         cartPrice = cartPrice + _categories[i].preis;
                         pricePreview = pricePreview + _categories[i].preis;
                         console.log(cartPrice.toFixed(2));
-                        localStorage.setItem(_categories[i].key, _categories[i].name);
-                        localStorageCount = localStorageCount + 1;
                     }
-                    if (_categories[i].category == "icecream") {
-                        let previewPicture = document.createElement("img");
-                        previewPicture.setAttribute("src", _categories[i].img);
-                        previewPicture.setAttribute("id", "icePreviewIcecream");
-                        document.querySelector(".preview").append(previewPicture);
-                        previewCounter = previewCounter + 1;
-                        cartPrice = cartPrice + _categories[i].preis;
-                        pricePreview = pricePreview + _categories[i].preis;
-                        console.log(cartPrice.toFixed(2));
-                        localStorage.setItem(_categories[i].key, _categories[i].name);
-                        localStorageCount = localStorageCount + 1;
-                    }
-                    if (_categories[i].category == "topping") {
-                        let previewPicture = document.createElement("img");
-                        previewPicture.setAttribute("src", _categories[i].img);
-                        previewPicture.setAttribute("id", "icePreviewTopping");
-                        document.querySelector(".preview").append(previewPicture);
-                        previewCounter = previewCounter + 1;
-                        cartPrice = cartPrice + _categories[i].preis;
-                        pricePreview = pricePreview + _categories[i].preis;
-                        console.log(cartPrice.toFixed(2));
-                        localStorage.setItem(_categories[i].key, _categories[i].name);
-                        localStorageCount = localStorageCount + 1;
-                    }
-                    previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
                 }
-                if (_categories[i].category != "cone") {
-                    if (_categories[i].category == "cone") {
-                        let previewPicture = document.createElement("img");
-                        previewPicture.setAttribute("src", _categories[i].img);
-                        previewPicture.setAttribute("id", "icePreviewBase");
-                        document.querySelector(".preview").append(previewPicture);
-                        previewCounter = previewCounter + 1;
-                        cartPrice = cartPrice + _categories[i].preis;
-                        pricePreview = pricePreview + _categories[i].preis;
-                        console.log(cartPrice.toFixed(2));
-                        localStorage.setItem(_categories[i].key, _categories[i].name);
-                        localStorageCount = localStorageCount + 1;
+                if (_categories[i].category == "icecream") {
+                    if (iceProduct.ice === undefined) {
+                        iceProduct.ice = [];
                     }
-                    if (_categories[i].category == "icecream") {
-                        let previewPicture = document.createElement("img");
-                        previewPicture.setAttribute("src", _categories[i].img);
-                        previewPicture.setAttribute("id", "icePreviewIcecream");
-                        document.querySelector(".preview").append(previewPicture);
-                        previewCounter = previewCounter + 1;
-                        cartPrice = cartPrice + _categories[i].preis;
-                        pricePreview = pricePreview + _categories[i].preis;
-                        console.log(cartPrice.toFixed(2));
-                        localStorage.setItem(_categories[i].key, _categories[i].name);
-                        localStorageCount = localStorageCount + 1;
-                    }
-                    if (_categories[i].category == "topping") {
-                        let previewPicture = document.createElement("img");
-                        previewPicture.setAttribute("src", _categories[i].img);
-                        previewPicture.setAttribute("id", "icePreviewTopping");
-                        document.querySelector(".preview").append(previewPicture);
-                        previewCounter = previewCounter + 1;
-                        cartPrice = cartPrice + _categories[i].preis;
-                        pricePreview = pricePreview + _categories[i].preis;
-                        console.log(cartPrice.toFixed(2));
-                        localStorage.setItem(_categories[i].key, _categories[i].name);
-                        localStorageCount = localStorageCount + 1;
-                    }
-                    previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
+                    iceProduct.ice.push(_categories[i].name);
+                    let previewPicture = document.createElement("img");
+                    previewPicture.setAttribute("src", _categories[i].img);
+                    previewPicture.setAttribute("id", "icePreviewIcecream");
+                    document.querySelector(".preview").append(previewPicture);
+                    previewCounter = previewCounter + 1;
+                    cartPrice = cartPrice + _categories[i].preis;
+                    pricePreview = pricePreview + _categories[i].preis;
+                    console.log(cartPrice.toFixed(2));
                 }
-                console.log(localStorage);
+                if (_categories[i].category == "topping") {
+                    if (iceProduct.topping === undefined) {
+                        iceProduct.topping = [];
+                    }
+                    iceProduct.topping.push(_categories[i].name);
+                    let previewPicture = document.createElement("img");
+                    previewPicture.setAttribute("src", _categories[i].img);
+                    previewPicture.setAttribute("id", "icePreviewTopping");
+                    document.querySelector(".preview").append(previewPicture);
+                    previewCounter = previewCounter + 1;
+                    cartPrice = cartPrice + _categories[i].preis;
+                    pricePreview = pricePreview + _categories[i].preis;
+                    console.log(cartPrice.toFixed(2));
+                }
+                previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
             }
-            document.getElementById("toCart")?.addEventListener("click", toCart);
-            document.getElementById("deleteCurrentIce")?.addEventListener("click", deleteIcePreview);
+            console.log(localStorage);
         }
-        function toCart(_event) {
-            cartCounter = (cartCounter + 1);
-            document.getElementById("icePreviewTopping")?.remove();
-            document.getElementById("icePreviewIcecream")?.remove();
-            document.getElementById("icePreviewBase")?.remove();
-            pricePreview = 0.00;
-            coneCounter = 0;
-            previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
-            cartCounterParagraph.innerHTML = `${cartCounter}`;
-            cartStorage = localStorage;
-            console.log(cartStorage);
-            localStorage.clear();
-        }
-        // DELETE PREVIEW ICE
-        function deleteIcePreview(_event) {
-            document.getElementById("icePreviewTopping")?.remove();
-            document.getElementById("icePreviewIcecream")?.remove();
-            document.getElementById("icePreviewBase")?.remove();
-            cartPrice = cartPrice - pricePreview;
-            pricePreview = 0.00;
-            coneCounter = 0;
-            previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
-        }
+        document.getElementById("toCart")?.addEventListener("click", toCart);
+        document.getElementById("deleteCurrentIce")?.addEventListener("click", deleteIcePreview);
+    }
+    function toCart(_event) {
+        cartCounter = (cartCounter + 1);
+        document.getElementById("icePreviewTopping")?.remove();
+        document.getElementById("icePreviewIcecream")?.remove();
+        document.getElementById("icePreviewBase")?.remove();
+        //ConeType prüfen & Preis übergeben
+        iceProduct.preis = pricePreview;
+        localStorage.setItem(Date.now().toString(), JSON.stringify(iceProduct));
+        pricePreview = 0.00;
+        previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
+        cartCounterParagraph.innerHTML = `${cartCounter}`;
+        console.log(cartStorage);
+    }
+    // DELETE PREVIEW ICE
+    function deleteIcePreview(_event) {
+        document.getElementById("icePreviewTopping")?.remove();
+        document.getElementById("icePreviewIcecream")?.remove();
+        document.getElementById("icePreviewBase")?.remove();
+        cartPrice = cartPrice - pricePreview;
+        pricePreview = 0.00;
+        previewPrice.innerHTML = "Preis: " + pricePreview.toFixed(2) + " €";
     }
 })(eisdiele || (eisdiele = {}));
 //# sourceMappingURL=script_eisdiele.js.map

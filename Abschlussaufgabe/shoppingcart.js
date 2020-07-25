@@ -14,9 +14,16 @@ var eisdiele;
         for (let index = 0; index <= localStorage.length; index++) {
             let articleKey = localStorage.key(index);
             let jsonString = localStorage.getItem(articleKey);
+            console.log(jsonString);
             article = JSON.parse(jsonString);
-            container.appendChild(generateDiv(article, true));
+            container.appendChild(generateArticles(article));
         }
+    }
+    function generateArticles(article) {
+        let cartOrderDiv = document.createElement("div");
+        // cartOrderDiv.setAttribute("key", article.key);
+        cartOrderDiv.innerHTML = `<ul><li>${article.coneType}</li></ul>`;
+        return cartOrderDiv;
     }
     function deleteAll() {
         localStorage.clear();
