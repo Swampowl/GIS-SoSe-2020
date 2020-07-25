@@ -1,7 +1,6 @@
 namespace eisdiele {
     window.addEventListener("load", init);
 
-
     //Objekte erstellen
     let coneDiv: HTMLDivElement;
     let icecreamDiv: HTMLDivElement;
@@ -11,14 +10,14 @@ namespace eisdiele {
     let cartPrice: number = 0.00;
     let pricePreview: number = 0.00;
     let previewCounter: number = 0;
+    let counter: number = 0;
     let previewPrice: HTMLParagraphElement;
     let cartStorage: Storage;
     let iceProduct: IceProduct;
 
 
-
+    //Interface für das Anzeigen der Produkte auf der Startseite 
     interface Article {
-
         category: string;
         img: string;
         name: string;
@@ -27,9 +26,9 @@ namespace eisdiele {
         key: string;
 
     }
-
+    //Interface wird an shoppingcart.ts/js exportiert
     export interface IceProduct {
-        //optional gesetze Attribute
+        //optional gesetze Attribute um mehrere Eis bestellen zu können
         coneType?: string;
         ice?: string[];
         topping?: string[];
@@ -37,12 +36,12 @@ namespace eisdiele {
 
     }
 
-
+    //Wird beim Seitenaufruf gefeuert & initialisiert laden der Artikel
     async function init(_event: Event): Promise<void> {
         await communicate("articles.json");
         console.log("Seite geladen");
     }
-    //Artikel aus articles.json einschleifen
+    //article.json importieren
     async function communicate(_url: RequestInfo): Promise<void> {
         let response: Response = await fetch("articles.json");
         let _categories: Article[] = await response.json();
@@ -52,14 +51,13 @@ namespace eisdiele {
 
 
     // Div für Artikel aufbauen
-
     function generateArticles(_categories: Article[]): void {
         coneDiv = <HTMLDivElement>document.querySelector(".cone");
         icecreamDiv = <HTMLDivElement>document.querySelector(".icecream");
         toppingDiv = <HTMLDivElement>document.querySelector(".toppings");
         previewPrice = <HTMLParagraphElement>document.getElementById("currentPricePreview");
         cartCounterParagraph = <HTMLParagraphElement>document.getElementById("cartCounter");
-
+        //Artikel aus .JSON einschleifen
         for (let i: number = 0; i <= _categories.length; i++) {
             let newDiv: HTMLDivElement = document.createElement("div");
             newDiv.id = _categories[i].name;
@@ -76,7 +74,7 @@ namespace eisdiele {
             buttonAddElement.innerHTML = `hinzufügen`;
             newDiv.appendChild(buttonAddElement);
             buttonAddElement.addEventListener("click", addToIce);
-
+            //generierte Divs in Kategorie einfügen
             if (_categories[i].category == "cone") {
                 (<HTMLDivElement>document.querySelector(".cone")).append(newDiv);
             }
@@ -86,21 +84,21 @@ namespace eisdiele {
             if (_categories[i].category == "topping") {
                 (<HTMLDivElement>document.querySelector(".topping")).append(newDiv);
             }
-
-            // hinzufügen AddToIce
-            // hinzufügen AddToIce
+            // Zum Vorschau-Eis hinzufügen
             function addToIce(_event: Event): void {
+                //Checken ob bereits ein IceProduct definiert ist
                 if (iceProduct === undefined) {
                     iceProduct = {};
                 }
-
+                //Wechsel zwischen Eis-Behälter ermöglichen & zum Vorschau-Eis hinzufügen
                 if (_categories[i].category == "cone") {
                     iceProduct.coneType = _categories[i].name;
-                    // Gibt es schon ein Cone?
                     let previewPicture: HTMLImageElement | null = document.querySelector("#icePreviewBase");
+                    //Wechsel
                     if (previewPicture != null) {
                         previewPicture.setAttribute("src", _categories[i].img);
                     }
+                    //zum Vorschau-Eis hinzufügen
                     else {
                         previewPicture = document.createElement("img");
                         previewPicture.setAttribute("src", _categories[i].img);
@@ -111,7 +109,7 @@ namespace eisdiele {
                         pricePreview = pricePreview + _categories[i].preis;
                         console.log(cartPrice.toFixed(2));
                     }
-
+                    //Eissorte zum Vorschau-Eis hinzufügen
                 }
                 if (_categories[i].category == "icecream") {
                     if (iceProduct.ice === undefined) {
@@ -127,6 +125,7 @@ namespace eisdiele {
                     pricePreview = pricePreview + _categories[i].preis;
                     console.log(cartPrice.toFixed(2));
                 }
+                //Toppings zum Vorschau-Eis hinzufügen
                 if (_categories[i].category == "topping") {
 
                     if (iceProduct.topping === undefined) {
@@ -155,35 +154,30 @@ namespace eisdiele {
 
     }
 
-
+    // Vorschau-Eis in String parsen & in localStorage pushen
     function toCart(_event: Event): void {
         cartCounter = (cartCounter + 1);
-        //ConeType prüfen & Preis übergeben
         iceProduct.preis = pricePreview;
-        localStorage.setItem(<string>Date.now().toString(), JSON.stringify(iceProduct));
+        localStorage.setItem("order" + counter, JSON.stringify(iceProduct));
         cartCounterParagraph.innerHTML = `${cartCounter}`;
         deleteIcePreview(_event);
         console.log(cartStorage);
+        counter++;
+        localStorage.setItem("counter", counter + "");
     }
-    // DELETE PREVIEW ICE
-
+    // Vorschau-Eis löschen & Preis festlegen
     function deleteIcePreview(_event: Event): void {
         console.log(_event.currentTarget);
+        //Wenn delete-event von toCart-Button getriggert wird
         if ((<HTMLElement>_event.currentTarget).id === "toCart") {
             console.log(cartPrice);
-
-
         }
+        //Eis wird verworfen, Preis wiederherstellen
         else {
             cartPrice = cartPrice - pricePreview;
             console.log(cartPrice);
-
         }
-
-
-
-
-
+        //Vorschau-Div leeren & Vorschau-Preis resetten
         let newPreview = document.querySelector(".preview");
         if (newPreview != null) {
             newPreview.innerHTML = "Vorschau: <br>";

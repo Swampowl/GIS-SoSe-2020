@@ -1,27 +1,27 @@
 {
-  "name": "gis-sose-2020",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "node Aufgabe_09/server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Swampowl/GIS-SoSe-2020.git"
-  },
-  "author": "swampowl",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Swampowl/GIS-SoSe-2020/issues"
-  },
-  "homepage": "https://github.com/Swampowl/GIS-SoSe-2020#readme",
-  "description": "swampowl",
-  "keywords": [
-    "swampowl"
-  ],
-  "dependencies": {
-    "@types/mongodb": "^3.5.25",
-    "@types/node": "^14.0.13",
-    "mongodb": "^3.5.9"
-  }
+    "name": "gis-sose-2020",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node Abschlussaufgabe/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Swampowl/GIS-SoSe-2020.git"
+    },
+    "author": "swampowl",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Swampowl/GIS-SoSe-2020/issues"
+    },
+    "homepage": "https://github.com/Swampowl/GIS-SoSe-2020#readme",
+    "description": "swampowl",
+    "keywords": [
+        "swampowl"
+    ],
+    "dependencies": {
+        "@types/mongodb": "^3.5.25",
+        "@types/node": "^14.0.13",
+        "mongodb": "^3.5.9"
+    }
 }

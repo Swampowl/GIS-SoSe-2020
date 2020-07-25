@@ -11,14 +11,16 @@ var eisdiele;
     let cartPrice = 0.00;
     let pricePreview = 0.00;
     let previewCounter = 0;
+    let counter = 0;
     let previewPrice;
     let cartStorage;
     let iceProduct;
+    //Wird beim Seitenaufruf gefeuert & initialisiert laden der Artikel
     async function init(_event) {
         await communicate("articles.json");
         console.log("Seite geladen");
     }
-    //Artikel aus articles.json einschleifen
+    //article.json importieren
     async function communicate(_url) {
         let response = await fetch("articles.json");
         let _categories = await response.json();
@@ -32,6 +34,7 @@ var eisdiele;
         toppingDiv = document.querySelector(".toppings");
         previewPrice = document.getElementById("currentPricePreview");
         cartCounterParagraph = document.getElementById("cartCounter");
+        //Artikel aus .JSON einschleifen
         for (let i = 0; i <= _categories.length; i++) {
             let newDiv = document.createElement("div");
             newDiv.id = _categories[i].name;
@@ -48,6 +51,7 @@ var eisdiele;
             buttonAddElement.innerHTML = `hinzufügen`;
             newDiv.appendChild(buttonAddElement);
             buttonAddElement.addEventListener("click", addToIce);
+            //generierte Divs in Kategorie einfügen
             if (_categories[i].category == "cone") {
                 document.querySelector(".cone").append(newDiv);
             }
@@ -57,19 +61,21 @@ var eisdiele;
             if (_categories[i].category == "topping") {
                 document.querySelector(".topping").append(newDiv);
             }
-            // hinzufügen AddToIce
-            // hinzufügen AddToIce
+            // Zum Vorschau-Eis hinzufügen
             function addToIce(_event) {
+                //Checken ob bereits ein IceProduct definiert ist
                 if (iceProduct === undefined) {
                     iceProduct = {};
                 }
+                //Wechsel zwischen Eis-Behälter ermöglichen & zum Vorschau-Eis hinzufügen
                 if (_categories[i].category == "cone") {
                     iceProduct.coneType = _categories[i].name;
-                    // Gibt es schon ein Cone?
                     let previewPicture = document.querySelector("#icePreviewBase");
+                    //Wechsel
                     if (previewPicture != null) {
                         previewPicture.setAttribute("src", _categories[i].img);
                     }
+                    //zum Vorschau-Eis hinzufügen
                     else {
                         previewPicture = document.createElement("img");
                         previewPicture.setAttribute("src", _categories[i].img);
@@ -80,6 +86,7 @@ var eisdiele;
                         pricePreview = pricePreview + _categories[i].preis;
                         console.log(cartPrice.toFixed(2));
                     }
+                    //Eissorte zum Vorschau-Eis hinzufügen
                 }
                 if (_categories[i].category == "icecream") {
                     if (iceProduct.ice === undefined) {
@@ -95,6 +102,7 @@ var eisdiele;
                     pricePreview = pricePreview + _categories[i].preis;
                     console.log(cartPrice.toFixed(2));
                 }
+                //Toppings zum Vorschau-Eis hinzufügen
                 if (_categories[i].category == "topping") {
                     if (iceProduct.topping === undefined) {
                         iceProduct.topping = [];
@@ -116,25 +124,30 @@ var eisdiele;
             console.log(localStorage);
         }
     }
+    // Vorschau-Eis in String parsen & in localStorage pushen
     function toCart(_event) {
         cartCounter = (cartCounter + 1);
-        //ConeType prüfen & Preis übergeben
         iceProduct.preis = pricePreview;
-        localStorage.setItem(Date.now().toString(), JSON.stringify(iceProduct));
+        localStorage.setItem("order" + counter, JSON.stringify(iceProduct));
         cartCounterParagraph.innerHTML = `${cartCounter}`;
         deleteIcePreview(_event);
         console.log(cartStorage);
+        counter++;
+        localStorage.setItem("counter", counter + "");
     }
-    // DELETE PREVIEW ICE
+    // Vorschau-Eis löschen & Preis festlegen
     function deleteIcePreview(_event) {
         console.log(_event.currentTarget);
+        //Wenn delete-event von toCart-Button getriggert wird
         if (_event.currentTarget.id === "toCart") {
             console.log(cartPrice);
         }
+        //Eis wird verworfen, Preis wiederherstellen
         else {
             cartPrice = cartPrice - pricePreview;
             console.log(cartPrice);
         }
+        //Vorschau-Div leeren & Vorschau-Preis resetten
         let newPreview = document.querySelector(".preview");
         if (newPreview != null) {
             newPreview.innerHTML = "Vorschau: <br>";
