@@ -143,17 +143,29 @@ li::before {
 
 #costumerOrders {
     position: fixed;
-    color: white;
-    background-color: #123;
+    color: black;
+    background-color: beige;
     overflow: show;
     width: 40%;
-    margin-top: 10%;
+    margin-top: 9%;
     left: 5%;
     border-radius: 5px 5px;
-    border: solid white;
+    border-style: solid;
+    border-radius: 5px 5px;
+    border: solid black;
     text-align: center;
 }
-
+#deleteAll{
+    bottom: 5%;
+    background-color: #123;
+    color: white;
+    margin: 5px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px
+}
 .pricePreview #deleteCurrentIce {
     background-color: #123;
     color: white;
@@ -284,18 +296,7 @@ li::before {
     font-size: 10px;
 }
 
-.pricePreview #toCart {
-    height: 5%;
-    background-color: #123;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 25px;
-}
-
-.pricePreview #toCart {
+#toCart{
     bottom: 5%;
     background-color: #123;
     color: white;
@@ -304,10 +305,10 @@ li::before {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
+    font-size: 10px
 }
 
-.pricePreview #toCart:active {
+#toCart:active {
     bottom: 5%;
     background-color: white;
     color: #123;

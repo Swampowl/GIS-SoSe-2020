@@ -126,6 +126,16 @@ var eisdiele;
     }
     // Vorschau-Eis in String parsen & in localStorage pushen
     function toCart(_event) {
+        if (!iceProduct.coneType) {
+            alert("Keine Waffel gewählt.");
+            return;
+        }
+        if (!iceProduct.topping) {
+            iceProduct.topping = [];
+        }
+        if (!iceProduct.ice) {
+            iceProduct.ice = [];
+        }
         cartCounter = (cartCounter + 1);
         iceProduct.preis = pricePreview;
         localStorage.setItem("order" + counter, JSON.stringify(iceProduct));

@@ -1,31 +1,34 @@
 namespace eisdiele {
   // import * as _ from "./script_eisdiele";
-
+  window.addEventListener("load", init);
   let container: HTMLDivElement;
-  let sendOrderButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("cartOrderConfirmation");
   let article: eisdiele.IceProduct;
   let prodctCount: number = 0;
   let counter: number = parseInt(<string>localStorage.getItem("counter"));
   let finalPrice: number = 0;
   let databaseString: String = "";
   let tempString: String = "";
-
-  window.addEventListener("load", init);
-
-  sendOrderButton.addEventListener("click", sendData);
-  async function sendData(): Promise<void> {
-    let formData: FormData;
-    formData = new FormData(document.forms[0]);
-    let _url: string = "https://swampowl.herokuapp.com";
-    let query: URLSearchParams = new URLSearchParams(<any>formData);
-    _url = _url + "/send" + "?" + query.toString();
-    await fetch(_url);
-  }
+  let sendOrderButton: HTMLButtonElement;
+  let cartOrderConfirmationParagraph: HTMLParagraphElement;
 
   function init(_event: Event): void {
+    sendOrderButton = <HTMLButtonElement>document.getElementById("cartOrderConfirmation");
+    cartOrderConfirmationParagraph = <HTMLParagraphElement>document.getElementById("orderConfirmationParagraph");
     container = <HTMLDivElement>document.querySelector("#costumerOrders");
     document.querySelector("#deleteAll")?.addEventListener("click", deleteAll);
     buildArticles();
+
+    sendOrderButton.addEventListener("click", sendData);
+    async function sendData(): Promise<void> {
+      console.log("TEst");
+      cartOrderConfirmationParagraph.innerHTML = "Ihre Bestellung wird nun bearbeitet!<br>Ihr Eis wird Sie in Kürze erreichen!";
+      let formData: FormData;
+      formData = new FormData(document.forms[0]);
+      let _url: string = "https://swampowl.herokuapp.com";
+      let query: URLSearchParams = new URLSearchParams(<any>formData);
+      _url = _url + "/send" + "?" + query.toString();
+      await fetch(_url);
+    }
   }
 
   function buildArticles(): void {
