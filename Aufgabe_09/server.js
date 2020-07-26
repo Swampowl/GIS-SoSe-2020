@@ -38,4 +38,5 @@ var Aufgabe09;
         _response.end();
     }
 })(Aufgabe09 = exports.Aufgabe09 || (exports.Aufgabe09 = {}));
+//mongodb+srv://Swampowl:<Tsv18600>@cluster420.simmy.mongodb.net/<Test>?retryWrites=true&w=majority
 //# sourceMappingURL=server.js.map

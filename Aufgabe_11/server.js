@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Aufgabe09 = void 0;
 const Http = require("http");
 const Url = require("url");
+const Mongo = require("mongodb");
 var Aufgabe09;
 (function (Aufgabe09) {
     console.log("start server");
@@ -13,6 +14,10 @@ var Aufgabe09;
     server.addListener("request", handleRequest);
     server.addListener("listening", handleListen);
     server.listen(port);
+    let mongoClient = new Mongo.MongoClient(_url, options);
+    await mongoClient.connect();
+    let orders = mongoClient.db("Test").collection("Students");
+    orders.insert({ ... });
     function handleListen() {
         console.log("Listening");
     }
@@ -38,4 +43,5 @@ var Aufgabe09;
         _response.end();
     }
 })(Aufgabe09 = exports.Aufgabe09 || (exports.Aufgabe09 = {}));
+//mongodb+srv://Swampowl:<Tsv18600>@cluster420.simmy.mongodb.net/<Test>?retryWrites=true&w=majority
 //# sourceMappingURL=server.js.map
