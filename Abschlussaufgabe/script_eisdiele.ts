@@ -164,7 +164,8 @@ namespace eisdiele {
             iceProduct.topping = [];
         }
         if (!iceProduct.ice) {
-            iceProduct.ice = [];
+            alert("Keine Eis gewählt.");
+            return;
         }
         cartCounter = (cartCounter + 1);
         iceProduct.preis = pricePreview;
