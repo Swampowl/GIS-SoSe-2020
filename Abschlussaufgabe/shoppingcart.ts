@@ -69,7 +69,7 @@ namespace eisdiele {
 
       //einzelne Bestellung innerhalb des Warenkorbs löschen
       function deleteSingleOrder(_event: Event): void {
-        console.log("Test_deleteSingleOrder");  
+        console.log("Test_deleteSingleOrder");
         // console.log(((<HTMLElement>_event.currentTarget).parentElement));
         finalPrice = finalPrice - parseFloat(article.preis + "");
         localStorage.removeItem("order" + index);
