@@ -51,8 +51,8 @@ namespace eisdiele {
     let cartOrderDiv: HTMLDivElement = document.createElement("div");
     // cartOrderDiv.setAttribute("key", article.key);
     prodctCount = prodctCount + 1;
-    cartOrderDiv.innerHTML = `Eis ${prodctCount}<ul id="oderList">${article.coneType}${article.ice}${article.preis?.toFixed(2)} €</ul>
-    <button id="deleteSingleOrder">Eis löschen</button>`;
+    cartOrderDiv.innerHTML = `<p>Eis ${prodctCount}: ${article.coneType},${article.ice},${article.topping}: ${article.preis?.toFixed(2)} €<br>
+    <button id="deleteSingleOrder">Eis löschen</button></p>`;
     for (let i: number = 0; i <= counter; i++) {
       databaseString = tempString;
     }
