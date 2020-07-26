@@ -4,7 +4,7 @@ import * as Mongo from "mongodb";
 export namespace eisdiele {
 
     let bestellungen: Mongo.Collection;
-    let databaseUrl: string = "mongodb+srv://Swampowl:Tsv18600@gis-sose2020.0rsjj.mongodb.net/<SwampowlEisdiele>?retryWrites=true&w=majority";
+    let databaseUrl: string = "mongodb+srv://Swampowl:Tsv18600@gis-sose2020.0rsjj.mongodb.net/SwampowlEisdiele?retryWrites=true&w=majority";
     //let databaseUrl: string = "mongodb://localhost: 27017";
 
     console.log("Starting server");
