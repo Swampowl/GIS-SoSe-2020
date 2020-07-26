@@ -16,7 +16,7 @@ namespace eisdiele {
   async function sendData(): Promise<void> {
     let formData: FormData;
     formData = new FormData(document.forms[0]);
-    let _url: string = "https://git.heroku.com/swampowl.git";
+    let _url: string = "https://swampowl.herokuapp.com";
     let query: URLSearchParams = new URLSearchParams(<any>formData);
     _url = _url + "/send" + "?" + query.toString();
     await fetch(_url);

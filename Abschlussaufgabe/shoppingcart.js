@@ -15,7 +15,7 @@ var eisdiele;
     async function sendData() {
         let formData;
         formData = new FormData(document.forms[0]);
-        let _url = "https://git.heroku.com/swampowl.git";
+        let _url = "https://swampowl.herokuapp.com";
         let query = new URLSearchParams(formData);
         _url = _url + "/send" + "?" + query.toString();
         await fetch(_url);
