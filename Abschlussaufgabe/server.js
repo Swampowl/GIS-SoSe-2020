@@ -6,7 +6,7 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var eisdiele;
 (function (eisdiele) {
-    let studentList;
+    let bestellungen;
     let databaseUrl = "mongodb+srv://Swampowl:Tsv18600@gis-sose2020.0rsjj.mongodb.net/<SwampowlEisdiele>?retryWrites=true&w=majority";
     //let databaseUrl: string = "mongodb://localhost: 27017";
     console.log("Starting server");
@@ -25,8 +25,8 @@ var eisdiele;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        studentList = mongoClient.db("EisdieleSwampowl").collection("Bestellungen");
-        console.log("Database connection ", studentList != undefined);
+        bestellungen = mongoClient.db("SwampowlEisdiele").collection("Bestellungen");
+        console.log("Database connection ", bestellungen != undefined);
     }
     function handleListen() {
         console.log("Listening");
@@ -37,10 +37,10 @@ var eisdiele;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            if (url.pathname == "/send")
-                studentList.insertOne(url.query);
-            else if (url.pathname == "/get") {
-                _response.write(JSON.stringify(await studentList.find().toArray()));
+            if (url.pathname == "/senden")
+                bestellungen.insertOne(url.query);
+            else if (url.pathname == "/holen") {
+                _response.write(JSON.stringify(await bestellungen.find().toArray()));
             }
         }
         _response.end();

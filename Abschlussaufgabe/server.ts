@@ -3,7 +3,7 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 export namespace eisdiele {
 
-    let studentList: Mongo.Collection;
+    let bestellungen: Mongo.Collection;
     let databaseUrl: string = "mongodb+srv://Swampowl:Tsv18600@gis-sose2020.0rsjj.mongodb.net/<SwampowlEisdiele>?retryWrites=true&w=majority";
     //let databaseUrl: string = "mongodb://localhost: 27017";
 
@@ -32,8 +32,8 @@ export namespace eisdiele {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
 
-        studentList = mongoClient.db("EisdieleSwampowl").collection("Bestellungen");
-        console.log("Database connection ", studentList != undefined);
+        bestellungen = mongoClient.db("SwampowlEisdiele").collection("Bestellungen");
+        console.log("Database connection ", bestellungen != undefined);
     }
 
 
@@ -53,14 +53,14 @@ export namespace eisdiele {
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 
-            if (url.pathname == "/send")
-                studentList.insertOne(url.query);
+            if (url.pathname == "/senden")
+                bestellungen.insertOne(url.query);
 
 
-            else if (url.pathname == "/get") {
+            else if (url.pathname == "/holen") {
 
 
-                _response.write(JSON.stringify(await studentList.find().toArray()));
+                _response.write(JSON.stringify(await bestellungen.find().toArray()));
 
             }
         }
