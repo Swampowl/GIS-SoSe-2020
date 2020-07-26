@@ -37,9 +37,9 @@ var Aufgabe11;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
-            if (url.pathname == "/senden")
+            if (url.pathname == "/send")
                 studentList.insertOne(url.query);
-            else if (url.pathname == "/holen") {
+            else if (url.pathname == "/get") {
                 _response.write(JSON.stringify(await studentList.find().toArray()));
             }
         }
