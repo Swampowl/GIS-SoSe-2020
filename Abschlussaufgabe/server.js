@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.eisdiele = void 0;
+exports.Aufgabe11 = void 0;
 const Http = require("http");
 const Url = require("url");
 const Mongo = require("mongodb");
-var eisdiele;
-(function (eisdiele) {
-    let bestellungen;
-    let databaseUrl = "mongodb+srv://Swampowl:Tsv18600@gis-sose2020.0rsjj.mongodb.net/SwampowlEisdiele?retryWrites=true&w=majority";
+var Aufgabe11;
+(function (Aufgabe11) {
+    let studentList;
+    let databaseUrl = "mongodb+srv://Swampowl:Tsv18600!@gis-sose2020.0rsjj.mongodb.net/SwampowlEisdiele?retryWrites=true&w=majority";
     //let databaseUrl: string = "mongodb://localhost: 27017";
     console.log("Starting server");
     //Port Number wird unter port gespeichert
@@ -25,8 +25,8 @@ var eisdiele;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        bestellungen = mongoClient.db("SwampowlEisdiele").collection("Bestellungen");
-        console.log("Database connection ", bestellungen != undefined);
+        studentList = mongoClient.db("SwampowlEisdiele").collection("Bestellungen");
+        console.log("Database connection ", studentList != undefined);
     }
     function handleListen() {
         console.log("Listening");
@@ -38,12 +38,12 @@ var eisdiele;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             if (url.pathname == "/senden")
-                bestellungen.insertOne(url.query);
+                studentList.insertOne(url.query);
             else if (url.pathname == "/holen") {
-                _response.write(JSON.stringify(await bestellungen.find().toArray()));
+                _response.write(JSON.stringify(await studentList.find().toArray()));
             }
         }
         _response.end();
     }
-})(eisdiele = exports.eisdiele || (exports.eisdiele = {}));
+})(Aufgabe11 = exports.Aufgabe11 || (exports.Aufgabe11 = {}));
 //# sourceMappingURL=server.js.map
