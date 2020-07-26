@@ -121,7 +121,6 @@ var eisdiele;
             }
             document.getElementById("toCart")?.addEventListener("click", toCart);
             document.getElementById("deleteCurrentIce")?.addEventListener("click", deleteIcePreview);
-            console.log(localStorage);
         }
     }
     // Vorschau-Eis in String parsen & in localStorage pushen
