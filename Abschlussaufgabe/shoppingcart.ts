@@ -58,7 +58,7 @@ namespace eisdiele {
       return cartOrderDiv;
     }
     
-    for (let index: number = 0; index <= counter; index++) {
+    for (let index: number = 0; index < counter; index++) {
       //let articleKey: string = <string>localStorage.key(index);
       let jsonString: string = <string>localStorage.getItem("order" + index);
       article = <eisdiele.IceProduct>JSON.parse(jsonString);

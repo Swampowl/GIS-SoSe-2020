@@ -54,7 +54,7 @@ var eisdiele;
             updateFinalPrice();
             return cartOrderDiv;
         }
-        for (let index = 0; index <= counter; index++) {
+        for (let index = 0; index < counter; index++) {
             //let articleKey: string = <string>localStorage.key(index);
             let jsonString = localStorage.getItem("order" + index);
             article = JSON.parse(jsonString);
