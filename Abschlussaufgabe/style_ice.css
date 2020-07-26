@@ -6,8 +6,9 @@ html {
 }
 
 #cone {
+    position: relative;
     display: inline-table;
-    left: 20%;
+    text-align: center;
     margin: 5px;
     width: 20%;
     height: 30%;
@@ -17,10 +18,10 @@ html {
 }
 
 .cone {
-    left: 0px;
+    position: relative;
+    left: 0%;
     margin: 5px;
     width: auto;
-    height: 30%;
 }
 
 .preview img {
@@ -51,8 +52,8 @@ li::before {
     /* Or a color you prefer */
 }
 
-
 }
+
 #icePreviewTopping {
     height: 10%;
     width: 10%;
@@ -60,6 +61,7 @@ li::before {
     left: 48%;
     position: absolute;
 }
+
 #icePreviewIcecream {
     height: 30%;
     width: 30%;
@@ -67,6 +69,7 @@ li::before {
     left: 38%;
     position: absolute;
 }
+
 #icePreviewBase {
     height: 20%;
     width: 20%;
@@ -74,39 +77,47 @@ li::before {
     left: 43%;
     position: absolute;
 }
+
 .cone img {
     height: 30%;
     width: 30%
 }
+
 .icecream {
-    left: 0px;
+    position: relative;
+    left: 0%;
     margin: 5px;
     width: auto;
     height: 30%;
 }
+
 #icecream {
+    position: relative;
     display: inline-table;
-    left: 20%;
+    text-align: center;
     margin: 5px;
     width: 20%;
-    height: 30%;
     background-color: beige;
     border: black;
     border-style: solid;
 }
+
 #icecream img {
     height: 20%;
     width: 20%
 }
+
 .topping {
-    left: 0px;
+    position: relative;
+    left: 0%;
     margin: 5px;
     width: auto;
-    height: 30%;
 }
+
 #topping {
+    position: relative;
     display: inline-table;
-    left: 20%;
+    text-align: center;
     margin: 5px;
     width: 20%;
     height: 30%;
@@ -114,42 +125,64 @@ li::before {
     border: black;
     border-style: solid;
 }
+
+.content {
+    position: relative;
+    overflow: hidden;
+    left: 21%;
+    margin-top: 8%;
+    margin-right: 5%;
+}
+
 .topping img {
     left: 50%;
     height: 20%;
     width: 20%
 }
+
 #cartCounter {
     position: fixed;
     color: white;
     background-color: #123;
     overflow: show;
-    width: 30px;
-    top: 6%;
-    left: 50%;
+    width: auto;
+    top: 7%;
+    left: 53%;
     border-radius: 5px 5px;
     border-style: solid;
     border-color: white;
-    border-width: 1px;
+    border-width: 1px
 }
+
 .purchase {
-    position: relative;
+    position: fixed;
+    color: black;
+    background-color: beige;
+    overflow: show;
+    width: 40%;
+    margin-top: 9%;
+    right: 5%;
+    border-radius: 5px 5px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
     text-align: center;
-    top: 363px;
 }
+
 #costumerOrders {
     position: fixed;
     color: white;
     background-color: #123;
     overflow: show;
-    width: 367px;
-    top: 14%;
-    left: 34%;
+    width: 40%;
+    margin-top: 10%;
+    left: 5%;
     border-radius: 5px 5px;
-    border-style: solid;
-    border-color: white;
-    border-width: 1px;
+    border: solid black;
+    text-align: center;
+   
 }
+
 .pricePreview #deleteCurrentIce {
     background-color: #123;
     color: white;
@@ -159,6 +192,7 @@ li::before {
     display: inline-block;
     font-size: 25px;
 }
+
 #cone button {
     bottom: 5%;
     background-color: #123;
@@ -170,6 +204,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 #cone button:active {
     bottom: 5%;
     background-color: white;
@@ -181,6 +216,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 .purchase button {
     bottom: 5%;
     background-color: #123;
@@ -192,6 +228,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 .purchase button:active {
     bottom: 5%;
     background-color: white;
@@ -203,6 +240,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 #icecream button {
     bottom: 5%;
     background-color: #123;
@@ -214,6 +252,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 #icecream button:active {
     bottom: 5%;
     background-color: white;
@@ -225,6 +264,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 #topping button {
     bottom: 5%;
     background-color: #123;
@@ -236,6 +276,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 #topping button:active {
     bottom: 5%;
     background-color: white;
@@ -247,6 +288,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 #orderConfirmation {
     bottom: 5%;
     background-color: #123;
@@ -258,6 +300,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 #orderConfirmation:active {
     bottom: 5%;
     background-color: white;
@@ -269,6 +312,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 .pricePreview #toCart {
     height: 5%;
     background-color: #123;
@@ -279,6 +323,7 @@ li::before {
     display: inline-block;
     font-size: 25px;
 }
+
 .pricePreview #toCart {
     bottom: 5%;
     background-color: #123;
@@ -290,6 +335,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 .pricePreview #toCart:active {
     bottom: 5%;
     background-color: white;
@@ -301,6 +347,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 .pricePreview #deleteCurrentIce {
     bottom: 5%;
     background-color: #123;
@@ -312,6 +359,7 @@ li::before {
     display: inline-block;
     font-size: 10px;
 }
+
 .pricePreview #deleteCurrentIce:active {
     bottom: 5%;
     background-color: white;
@@ -325,6 +373,7 @@ li::before {
 }
 
 /* PREVIEW */
+
 .preview {
     overflow: hidden;
     border: solid black;
@@ -338,6 +387,7 @@ li::before {
     height: 30%;
     justify-content: center;
 }
+
 .pricePreview {
     overflow: hidden;
     border: solid black;
@@ -351,76 +401,65 @@ li::before {
     height: 20%;
     justify-content: center;
 }
-.content {
-    position: relative;
-    width: auto;
-    top: 110px;
-    text-align: center;
-}
-body {
-    text-align: center;
-    top: 150px;
-}
 
 /* START NAVBAR */
 
 /* START NAVBAR */
 
 /* START NAVBAR */
+
 .topbox .headline {
     color: white;
     font-size: 40px;
 }
+
 .topbox {
     overflow: hidden;
     left: 0;
     text-align: center;
-    color: black;
+    color: white;
     background-color: #123;
     position: fixed;
     /* Set the navbar to fixed position */
-    
     top: 0;
     /* Position the navbar at the top of the page */
-    
     width: 100%;
     /* Full width */
-    
-    height: 70px;
+    height: 10%;
     justify-content: center;
+    z-index: 9;
 }
 
 /* The navigation bar */
+
 .navbar {
     left: 0;
     overflow: hidden;
     background-color: #123;
     position: fixed;
-    /* Set the navbar to fixed position */
-    
-    top: 70px;
-    /* Position the navbar at the top of the page */
-    
+    top: 9%;
     width: 100%;
-    /* Full width */
-    
-    height: auto;
+    z-index: 9;
 }
 
 /* Links inside the navbar */
+
 .navbar a {
+    position: relative;
+    width: 33.3%;
     float: left;
-    display: block;
+    display: inline;
     color: #f2f2f2;
     align-items: center;
     text-align: center;
-    padding: 5px 13.86%;
     text-decoration: none;
 }
+
 .navbar a.active {
     background-color: #f2f2f2;
     color: #123;
 }
+
 .navbar a:hover {
     background: #ddd;
     color: #123;
@@ -433,6 +472,7 @@ body {
 /* ENDE NAVBAR */
 
 /* POPUP ORDER CONFIRMATION */
+
 @media screen and (max-width:1250px) {
     .container ul li {
         width: 40%;
@@ -441,7 +481,9 @@ body {
 }
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+
 @media screen and (max-width: 600) {}
-@media screen and (min-width: 601,
-max-width 1024) {}
+
+@media screen and (min-width: 601, max-width 1024) {}
+
 @media screen and (min-width: 1025) {}

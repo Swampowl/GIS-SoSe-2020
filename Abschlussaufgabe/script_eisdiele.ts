@@ -33,6 +33,7 @@ namespace eisdiele {
         ice?: string[];
         topping?: string[];
         preis?: number;
+        priceFinal: number;
 
     }
 
@@ -141,7 +142,6 @@ namespace eisdiele {
                     pricePreview = pricePreview + _categories[i].preis;
                     console.log(cartPrice.toFixed(2));
                 }
-
 
                 previewPrice.innerHTML = "Preis: " + <String>pricePreview.toFixed(2) + " €";
             }

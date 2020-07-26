@@ -63,6 +63,6 @@ namespace eisdiele {
 
   function deleteAll(): void {
     localStorage.clear();
-    container.innerHTML = "";
+    container.innerHTML = "Der Warenkorb enthält keine Produkte mehr.";
   }
 }

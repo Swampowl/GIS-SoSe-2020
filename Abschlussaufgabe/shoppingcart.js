@@ -56,7 +56,7 @@ var eisdiele;
     }
     function deleteAll() {
         localStorage.clear();
-        container.innerHTML = "";
+        container.innerHTML = "Der Warenkorb enthält keine Produkte mehr.";
     }
 })(eisdiele || (eisdiele = {}));
 //# sourceMappingURL=shoppingcart.js.map
