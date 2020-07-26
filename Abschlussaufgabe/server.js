@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Aufgabe11 = void 0;
 const Http = require("http");
 const Url = require("url");
 const Mongo = require("mongodb");
-var Aufgabe11;
-(function (Aufgabe11) {
+var eisdiele;
+(function (eisdiele) {
     let studentList;
     let databaseUrl = "mongodb+srv://Swampowl:Tsv18600!@gis-sose2020.0rsjj.mongodb.net/SwampowlEisdiele?retryWrites=true&w=majority";
     //let databaseUrl: string = "mongodb://localhost: 27017";
@@ -45,5 +44,5 @@ var Aufgabe11;
         }
         _response.end();
     }
-})(Aufgabe11 = exports.Aufgabe11 || (exports.Aufgabe11 = {}));
+})(eisdiele || (eisdiele = {}));
 //# sourceMappingURL=server.js.map
